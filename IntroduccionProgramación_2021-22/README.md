@@ -49,7 +49,7 @@ El proyecto está organizado en módulos bien estructurados que implementan los 
 │
 ├── README.md
 ├── IP2122_Proyecto_Set.pdf          # Enunciado original
-└── JuegoSet                         # Proyecto completo
+└── Proyecto_JuegoSet                # Proyecto completo
     ├── src
     │   ├── TADcarta.cpp / .h
     │   ├── TADbaraja.cpp / .h
@@ -58,7 +58,7 @@ El proyecto está organizado en módulos bien estructurados que implementan los 
     │   ├── entorno.cpp / .h
     │   └── main.cpp
     ├── img                          # Imágenes PNG + fuente .ttf
-    └── Memoria_JuegoSet(IP).pdf    # Documento final del proyecto
+    └── MemoriaProyectoSet_2021-22   # Documento final del proyecto
 ```
 
 ---
