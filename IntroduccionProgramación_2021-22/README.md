@@ -3,9 +3,6 @@
 **Asignatura:** Introducción a la Programación  
 **Curso:** 1º de Grado en Ingeniería Informática  
 **Autores:** Ignacio Alcalde Torrescusa, Darío Álvarez Barrado  
-**Grupo de prácticas:** Laboratorio 4  
-**Profesora:** Cristina Vicente Chicote  
-**Convocatoria:** Enero
 
 ---
 
@@ -47,11 +44,11 @@ El proyecto está organizado en módulos bien estructurados que implementan los 
 ---
 
 ## 📦 Contenido del repositorio
-/IntroduccionProgramacion_ProyectoSet_2021-22
+/IntroduccionProgramacion_2021-22
 │
 ├── README.md
 ├── IP2122_Proyecto_Set.pdf              # Enunciado original
-└── JuegoSet                             # Proyecto completo
+└── Proyecto_JuegoSet                    # Proyecto completo
     ├── src
     │   ├── TADcarta.cpp / .h
     │   ├── TADbaraja.cpp / .h
@@ -60,7 +57,7 @@ El proyecto está organizado en módulos bien estructurados que implementan los 
     │   ├── entorno.cpp / .h
     │   └── main.cpp
     ├── img                               # Imágenes PNG + fuente .ttf
-    └── Memoria_JuegoSet(IP).pdf          # Documento final del proyecto
+    └── MemoriaProyectoSet_2021-22.pdf    # Documento final del proyecto
 
 ---
 
@@ -69,23 +66,6 @@ El proyecto está organizado en módulos bien estructurados que implementan los 
 - Compilación en **Eclipse** con soporte de C++.
 - Requiere tener instalada la librería **Allegro5**.
 - Utiliza el fichero de configuración `set.cnf` para los parámetros iniciales.
-
----
-
-## 🧪 Ampliaciones opcionales (propuestas por la asignatura)
-
-*No implementadas en nuestra versión final, pero posibles:*
-
-- Añadir columna extra de cartas (F1)
-- Mostrar ayuda con un set sugerido (F2)
-- Resolución automática del juego (solo en trabajos en pareja)
-
----
-
-## 🗓️ Planificación y dedicación
-
-- Total estimado: 25–30 horas de trabajo conjunto.
-- Nos organizamos sin una planificación estricta, marcando metas pequeñas y colaborando constantemente.
 
 ---
 
