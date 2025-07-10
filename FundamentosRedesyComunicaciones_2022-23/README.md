@@ -1,7 +1,7 @@
 # 🌐 Fundamentos de Redes y Comunicaciones (2022/2023)
 
 **Asignatura:** Fundamentos de Redes y Comunicaciones  
-**Curso:** 2º del Grado en Ingeniería Informática
+**Curso:** 2º de Grado en Ingeniería Software  
 **Autores:** Ignacio Alcalde Torrescusa  
 
 ---
