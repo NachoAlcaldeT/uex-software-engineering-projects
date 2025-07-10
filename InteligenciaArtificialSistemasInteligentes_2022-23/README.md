@@ -49,7 +49,7 @@ Los resultados completos se encuentran en el informe `IASI_Memoria_ResolucionLab
 ---
 
 ## 📦 Contenido del repositorio
-´´´
+```
 /InteligenciaArtificialSistemasInteligentes_2022-23
 │
 ├── README.md                               
@@ -62,7 +62,7 @@ Los resultados completos se encuentran en el informe `IASI_Memoria_ResolucionLab
     ├── matriz.txt                               # Mapa base de obstáculos
     ├── bin/                                     # Archivos compilados (.class)
     └── .project / .classpath / .settings/       # Configuración del proyecto Eclipse
-´´´
+```
 
 ---
 
