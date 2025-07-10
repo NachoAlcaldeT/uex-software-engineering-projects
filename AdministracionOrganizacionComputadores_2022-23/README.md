@@ -18,6 +18,7 @@ El proyecto incluye el diseño de la interfaz gráfica, la gestión del contened
 ```
 /AdministracionOrganizacionComputadores_2022-23
 │
+├── README.md
 ├── TetrisGame_Enunciado.pdf # Enunciado original de la práctica
 └── TetrisGame_CppASM # Proyecto completo
 	├── main.cpp
