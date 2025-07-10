@@ -74,8 +74,10 @@ Este proyecto supuso un desafío técnico importante al ser una de las primeras 
 
 ---
 
+## 📦 Contenido del repositorio
 ```
-## 📁 Archivos incluidos
+/IntroduccionComputadores_2021-22
+│
 ├── README.md
 ├── 2048_BASE.asm # Código ensamblador del juego completo
 ├── 2048Game-Ensamblador_Enunciado.pdf # Contiene todos los enunciados por fases del proyecto.
