@@ -44,8 +44,7 @@ El protocolo se construyó en cinco etapas prácticas:
 > El sistema final reproduce fielmente cómo funcionan los protocolos reales en redes cableadas, incluyendo errores, retransmisiones y recuperación completa.
 
 ## 📦 Contenido del repositorio
-
-´´´
+```
 /FundamentosRedesComunicaciones_2022-23
 │
 ├── README.md                              
@@ -61,7 +60,7 @@ El protocolo se construyó en cinco etapas prácticas:
     ├── Sesion5.cpp                             # Programa principal que ejecuta el protocolo de comunicación
     ├── networkFunctions.cpp / .h               # Funciones de red y lógica de tramas
     └── userInterface.cpp / .h                  # Interfaz de usuario en consola
-´´´
+```
 
 ---
 
