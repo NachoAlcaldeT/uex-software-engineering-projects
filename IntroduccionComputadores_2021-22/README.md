@@ -1,9 +1,9 @@
-# 🖥️ Introducción a los Computadores – Juego 2048 (2021/2022)
+# 🖥️ Juego 2048 - Introducción a los Computadores (2021/2022)
 
 **Asignatura:** Introducción a los Computadores  
 **Curso:** 1º de Grado en Ingeniería del Software  
-**Autor:** Ignacio Alcalde Torrescusa
-**Herramienta usada:** [Emu8086] (emulador de procesador Intel 8086)
+**Autor:** Ignacio Alcalde Torrescusa  
+**Herramienta usada:** Emu8086 (emulador de procesador Intel 8086)
 
 ---
 
@@ -76,9 +76,10 @@ Este proyecto supuso un desafío técnico importante al ser una de las primeras 
 
 ```
 ## 📁 Archivos incluidos
+├── README.md
 ├── 2048_BASE.asm # Código ensamblador del juego completo
 ├── 2048Game-Ensamblador_Enunciado.pdf # Contiene todos los enunciados por fases del proyecto.
-├── 2048Game-MemoriaProyecto_2021-22.pdf # Explicación paso a paso de la interfaz, ejemplos y funcionamiento interno
+└── 2048Game-MemoriaProyecto_2021-22.pdf # Explicación paso a paso de la interfaz, ejemplos y funcionamiento interno
 ```
 
 ---
