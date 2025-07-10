@@ -1,4 +1,4 @@
-# 🧱 Tetris en C++ y Ensamblador x86-64 (Qt) - Administración y Organización de Computadores (2022-23)
+# 🧱 Tetris en C++ y Ensamblador - Administración y Organización de Computadores (2022-23)
 
 **Curso:** 2º Grado en Ingeniería Software – UEx  
 **Asignatura:** Administración y Organización de Computadores (2022-23)  
@@ -18,7 +18,6 @@ El proyecto incluye el diseño de la interfaz gráfica, la gestión del contened
 ```
 /AdministracionOrganizacionComputadores_2022-23
 │
-├── README.md # Este documento
 ├── TetrisGame_Enunciado.pdf # Enunciado original de la práctica
 └── TetrisGame_CppASM # Proyecto completo
 	├── main.cpp
