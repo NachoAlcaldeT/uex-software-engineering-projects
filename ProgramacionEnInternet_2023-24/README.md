@@ -17,9 +17,12 @@ Cada actividad ha consolidado habilidades fundamentales en tecnologías web mode
 - **Actividad 3:** Exposición de servicios REST y desarrollo del cliente en AngularJS.
 
 Este proyecto completo simula una aplicación real de gestión de alojamientos, desde el diseño estático hasta la lógica de negocio completa y la interacción dinámica mediante APIs REST.
+
 ---
-```
+
 ## 📦 Contenido del repositorio
+
+```
 /ProgramacionEnInternet_2023-24  
 │  
 ├── README.md                         # Documentación principal del proyecto  
