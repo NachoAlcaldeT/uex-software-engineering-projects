@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Nacho Alcalde">
+
+    <title>Booking.com</title>
+
+    <link href="style7.css" type="text/css" rel="stylesheet" media="">
+    <link rel="icon" href="img/icono.svg">
+
+</head>
+
+<body>
+    <header>
+        <div id="bannerAzul">
+            <div class="cabecera">
+                <h3>Booking.com</h3>
+
+                <p id="EUR">EUR</p>
+
+                <div id="icono1" class="iconosInicioSesion"><img src="img/bandera.png" alt="bandera" width="30"></div>
+                <div id="icono2" class="iconosInicioSesion"><img src="img/ayudaWhite.png" alt="ayuda" width="30"></div>
+
+                <p>Registra tu alojamiento</p>
+
+                <button id="inicioSesion" class="inicioSesion">Inicia sesión</button>
+                <button class="inicioSesion">Hazte una cuenta</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="input-group">
+            <label for="nombreAlojamiento">Nombre del alojamiento</label>
+            <input type="text" id="nombreAlojamiento" placeholder="Escribe el nombre">
+        </div>
+
+        <div class="input-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" placeholder="Escribe la dirección">
+        </div>
+
+        <div class="input-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" placeholder="Escribe el teléfono">
+        </div>
+
+        <div class="input-group">
+            <label for="distanciaCentro">Distancia al centro (en km)</label>
+            <input type="text" id="distanciaCentro" placeholder="Escribe la distancia">
+        </div>
+
+        <div class="input-group">
+            <label for="valoracion">Valoración media</label>
+            <input type="text" id="valoracion" placeholder="Escribe la valoración">
+        </div>
+
+        <div class="input-group">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" placeholder="Escribe la descripción"></textarea>
+        </div>
+
+        <p>Servicios o instalaciones ofrecidos:</p>
+        <div class="instalaciones">
+            <div class="checkbox-option">
+                <input type="checkbox" id="siCheckbox" name="siCheckbox">
+                <label>WiFi</label>
+            </div>
+            <div class="checkbox-option">
+                <input type="checkbox" id="noCheckbox" name="noCheckbox">
+                <label>TV</label>
+            </div>
+            <div class="checkbox-option">
+                <input type="checkbox" id="siCheckbox" name="siCheckbox">
+                <label>Aire</label>
+            </div>
+        </div>
+
+        <p>¿Permite macotas?</p>
+        <div class="instalaciones">
+            <div class="checkbox-option">
+                <input type="checkbox" id="siCheckbox" name="siCheckbox">
+                <label>Sí</label>
+            </div>
+            <div class="checkbox-option">
+                <input type="checkbox" id="noCheckbox" name="noCheckbox">
+                <label>No</label>
+            </div>
+        </div>
+
+        <button type="button">Guardar cambios</button>
+    </div>
+
+    <div class="footer">
+        <a href="#">Sobre Booking.com</a>
+        <a href="#">Atención al cliente</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Política de privacidad y cookies</a>
+        <a href="#">Gestiona las recomendaciones personalizadas</a>
+    </div>
+
+</body>
+
+</html>

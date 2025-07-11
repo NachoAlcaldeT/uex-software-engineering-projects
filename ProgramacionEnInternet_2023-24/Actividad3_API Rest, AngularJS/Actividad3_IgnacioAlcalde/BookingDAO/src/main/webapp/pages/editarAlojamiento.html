@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="../css/style7.css">
+    <div class="container">
+	 <form data-ng-submit="alojamiento.functions.editarProperty()">
+        	
+        	<div class="input-group">
+		   		<label for="nombreAlojamiento">Nombre del alojamiento</label>
+		    	<input type="text" id="name" name="name" data-ng-model="alojamiento.property.name" required>
+			</div>
+			
+			<div class="input-group">
+			    <label for="direccion">Cuidad</label>
+			    <input type="text" id="city" name="city" data-ng-model="alojamiento.property.city" required>
+			</div>
+			
+			<div class="input-group">
+			    <label for="direccion">Dirección</label>
+			    <input type="text" id="address" name="address" data-ng-model="alojamiento.property.address" required>
+			</div>
+			
+			<div class="input-group">
+			    <label for="telefono">Teléfono</label>
+			    <input type="tel" id="telephone" name="telephone" data-ng-model="alojamiento.property.telephone" required>
+			</div>
+			
+			<div class="input-group">
+			    <label for="distanciaCentro">Distancia al centro (en km)</label>
+			    <input type="text" id="centerDistance" name="centerDistance" data-ng-model="alojamiento.property.centerDistance" required>
+			</div>
+			
+			<div class="input-group">
+			    <label for="valoracion">Valoración media</label>
+			    <input type="text" id="gradesAverage" name="gradesAverage" data-ng-model="alojamiento.property.gradesAverage" required>
+			</div>
+			
+			<div class="input-group">
+			    <label for="descripcion">Descripción</label>
+			    <input type="text" id="description" name="description" data-ng-model="alojamiento.property.description" required>
+			</div>
+
+         <p>Servicios o instalaciones ofrecidos:</p>
+        <div class="instalaciones">
+            <div class="checkbox-option">
+                <input type="checkbox" id="TV" name="TV" data-ng-model="alojamiento.property.TV" data-ng-true-value="'1'" data-ng-false-value="'0'">
+                <label for="TV">TV</label>
+            </div>
+            <div class="checkbox-option">
+                <input type="checkbox" id="aireAcondicionado" name="aireAcondicionado" data-ng-model="alojamiento.property.aireAcondicionado" data-ng-true-value="'1'" data-ng-false-value="'0'">
+                <label for="aireAcondicionado">Aire Acondicionado</label>
+            </div>
+        </div>
+		
+		<p>Disponibilidad:</p>
+        <div class="instalaciones">
+            <div class="checkbox-option">
+                <input type="checkbox" id="available" name="available" data-ng-model="alojamiento.property.available" data-ng-true-value="'1'" data-ng-false-value="'0'">
+                <label for="available">Disponible</label>
+            </div>
+        </div>
+		
+        <p>¿Permite mascotas?</p>
+        <div class="instalaciones">
+            <div class="checkbox-option">
+                <input type="checkbox" id="petFriendly" name="petFriendly" data-ng-model="alojamiento.property.petFriendly" data-ng-true-value="'1'" data-ng-false-value="'0'">
+                <label for="petFriendly">Sí</label>
+            </div>
+        </div>
+        
+        <table id="habitaciones">
+            <thead>
+                <tr>
+                    <th class="listaHabitaciones">Nombre</th>
+                    <th class="listaHabitaciones">Descripcion</th>
+                    <th class="listaHabitaciones">Precio/noche</th>
+                    <th class="listaHabitaciones">Habitaciones</th>
+                    <th class="listaHabitaciones">EDIT</th>
+                    <th class="listaHabitaciones">DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="accommodation in alojamiento.accommodations">
+                    <td class="listaHabitaciones">{{accommodation.name}}</td>
+                    <td class="listaHabitaciones">{{accommodation.description}}</td>
+                    <td class="listaHabitaciones">{{accommodation.price}}</td>
+                    <td class="listaHabitaciones">{{accommodation.numAccommodations}}</td>
+                    <td class="listaHabitaciones">
+                        <a data-ng-href="#!/EditarAccommodation/{{accommodation.id}}/">
+	                        <img src="../img/edit.png" alt="edit">
+	                    </a>
+                    </td>
+                    <td class="listaHabitaciones">
+	                    <a data-ng-href="#!/EliminarAccommodation/{{accommodation.id}}/">
+	                        <img src="../img/delete.png" alt="delete">
+	                    </a>
+                    </td>
+                </tr>
+                <!-- Aquí puedes agregar más filas según sea necesario -->
+            </tbody>
+        </table>
+		
+		<a data-ng-href="#!/NuevaAccommodation/{{alojamiento.property.id}}/">
+        	<button id="nuevaHabitacion" type="submit">Nueva Habitacion</button>
+		</a>
+		
+		<button id="guardarCambios" type="submit">Guardar cambios</button>
+     </form>	
+    </div>
+
+    <div class="footer">
+        <a href="#">Sobre Booking.com</a>
+        <a href="#">Atención al cliente</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Política de privacidad y cookies</a>
+        <a href="#">Gestiona las recomendaciones personalizadas</a>
+    </div>

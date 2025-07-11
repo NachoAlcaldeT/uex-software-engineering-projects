@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="../css/dejarValoracion.css">
+<div class="container">
+    <div class="feedback">
+        <h2>Nueva Valoración</h2>
+        <div class="informacion-extra1">
+            <p>Este comentario será público</p>
+            <img src="../img/informacion.png" alt="Información">
+        </div>
+        <form name="reviewForm">
+            <div class="input-group" data-ng-class="{'has-error': reviewForm.valoracion.$invalid && reviewForm.valoracion.$touched}">
+                <label for="valoracion">Valoración (de 1 a 5)</label>
+                <input type="number" id="valoracion" name="valoracion" min="1" max="5" data-ng-model="review.review.grade" required>
+                <div data-ng-show="reviewForm.valoracion.$invalid && reviewForm.valoracion.$touched">
+                    <div class="error-message">Valoracion incorrecta: La valoración debe ser un número entre 1 y 5.</div>
+                </div>
+            </div>
+            <div class="input-group" data-ng-class="{'has-error': reviewForm.descripcion.$invalid && reviewForm.descripcion.$touched}">
+                <label for="descripcion">Comentario</label>
+                <textarea id="descripcion" name="descripcion" rows="4" cols="50" data-ng-model="review.review.review" required></textarea>
+                <div data-ng-show="reviewForm.descripcion.$invalid && reviewForm.descripcion.$touched">
+                    <div class="error-message">Comentario vacio: Es obligatorio dejar un comentario.</div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="btn" type="submit" data-ng-click="review.functions.crearReview()" data-ng-disabled="reviewForm.$invalid">Enviar Valoración</button>
+                 <button class="btn" type="submit" data-ng-click="review.functions.cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="#">Sobre Booking.com</a>
+    <a href="#">Atención al cliente</a>
+    <a href="#">Términos y condiciones</a>
+    <a href="#">Política de privacidad y cookies</a>
+    <a href="#">Gestiona las recomendaciones personalizadas</a>
+</div>

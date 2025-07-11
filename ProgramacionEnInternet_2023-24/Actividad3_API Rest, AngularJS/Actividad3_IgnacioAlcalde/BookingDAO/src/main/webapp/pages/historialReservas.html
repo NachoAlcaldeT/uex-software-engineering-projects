@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="../css/style6.css">
+    <div class="container">
+        <div id="inicio_reservas">
+            <div id="titulo">
+                Reserva y viajes
+            </div>
+            <div id="pregunta_inicial_reservas">
+                <a href="#" class="blue-link">¿No encuentras una reserva?</a>
+            </div>
+        </div>
+
+        <div class="Reserva" data-ng-repeat="reserva in reservas">
+            <div class="Ubicacion_reserva">
+                 {{reserva.property.city}}
+            </div>
+            <div class="fechas_reserva">
+                30 nov 2023 - 1 dic 2023
+            </div>
+            <div id="Desc_reserva">
+                <img src="../img/Reserva1.png" alt="Foto reserva1" id="foto_reserva">
+                <div>
+                    <div class="Nombre_hotel_reserva">
+                        {{reserva.property.name}}
+                    </div>
+                    <div class="Fechas_reserva_rectangulo">
+                        30 nov 2023 - 1 dic 2023 - {{reserva.property.city}}
+                    </div>
+                    <div class="Fechas_reserva_rectangulo">
+                        Reservada
+                    </div>
+                </div>
+                <div class="Precio_reserva">
+                    € {{reserva.totalPrice}}
+                </div>
+                <img src="../img/3puntos_reservas.png" alt="Foto menu" id="foto_menu_reserva">
+            </div>
+        </div> 
+    </div>
+
+    <div class="footer">
+        <a href="#">Sobre Booking.com</a>
+        <a href="#">Atención al cliente</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Política de privacidad y cookies</a>
+        <a href="#">Gestiona las recomendaciones personalizadas</a>
+    </div>
+

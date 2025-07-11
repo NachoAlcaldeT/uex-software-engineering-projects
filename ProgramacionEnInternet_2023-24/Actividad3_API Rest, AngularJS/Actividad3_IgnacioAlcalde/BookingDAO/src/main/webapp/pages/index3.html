@@ -1,0 +1,202 @@
+<link rel="stylesheet" href="../css/style3.css">
+<div class="container" data-ng-controller="controladorListaProperties">
+        <form data-ng-submit="buscar()">
+            <nav>
+                <div class="nav-rectangle">
+		            <div class="filter-option">
+		                <img src="../img/coche.png" alt="¿A dónde vas?">
+		                <input type="text" name="destino" placeholder="¿A dónde vas?" style="width: 150px;" data-ng-model="destino">
+		            </div>
+		            <div class="filter-option">
+		                <img src="../img/calendario.png" alt="Fecha de entrada - Fecha de salida">
+		                <input type="date" name="fecha_entrada">
+		                <input type="date" name="fecha_salida">
+		            </div>
+		            <div class="filter-option">
+		                <img src="../img/usuario.png" alt="2 adultos - 0 niños - 1 habitación">
+		                <input type="number" name="adultos" placeholder="Adultos" style="width: 60px;">
+		                <input type="number" name="niños" placeholder="Niños" style="width: 80px;">
+		                <input type="number" name="habitaciones" placeholder="Habitaciones" style="width: 100px;">
+		            </div>
+                    <button id="search-button" type="submit">Buscar</button>
+                </div>
+            </nav>
+        </form>
+
+
+
+
+        <p>Inicio > España > Extremadura > Caceres > Resultados de la búsqueda</p>
+
+        <div class="sections">
+            <div class="left-section">
+
+                <div class="top-div">
+                    <button class="ver-mapa-button">Ver en el mapa</button>
+                    <img src="../img/mapa.jpg" alt="Mapa">
+                </div>
+
+                <div class="bottom-div">
+                    <p class="filtros">Filtrar por:</p>
+                    <div class="separador-linea"></div>
+                    <p class="tu-presupuesto">Tu presupuesto (por noche)</p>
+                    <p id="cantidad-dinero">500</p>
+                    <input type="range" id="presupuesto" min="0" max="1000" step="10" value="500">
+                    <div class="separador-linea"></div>
+
+                    <div class="filtros-populares">
+                        <p>Filtros populares:</p>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox1" value="hoteles">
+                            <p>Hoteles</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox2" value="hoteles">
+                            <p>Desayuno incluido</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>4 estrellas</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Fantastico: 9 o más</p>
+                        </div>
+
+                        <p id="fantastico">Según los comentarios de los clientes</p>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Hostales y pensiones</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Cancelación gratis</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Parking</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Villas</p>
+                        </div>
+                    </div>
+
+
+                    <!--<div class="separador-linea"></div>-->
+
+                </div>
+            </div>
+            <div class="right-section">
+                <p>Cáceres: 44 alojamientos encontrados</p>
+
+                <form data-ng-submit="filtrarPorDisponibilidad(filtroSeleccionado)">
+				    <label for="filtro">Filtrar por disponibilidad:</label>
+				    <select name="filtro" id="filtro" data-ng-model="filtroSeleccionado">
+				        <option value="todos">Todos</option>
+				        <option value="disponible">Disponible</option>
+				        <option value="no_disponible">No disponible</option>
+				        <option value="valoracion">Por valoración</option>
+				    </select>
+				    <button type="submit">Filtrar</button>
+				</form>
+
+                
+                <div class="informacion-extra1">
+                    <img src="../img/informacion.png" alt="Información">
+                    <p>Un 79% de los alojamientos ya no estan disponibles en nuestra web para esas fechas.</p>
+                    <img src="../img/cruz.png" alt="Cruz">
+                </div>
+                <div class="informacion-extra2">
+                    <p>La comisión que pagan por alojamientos por las reservas y otros factores pueden influir en su puesto en el ranking. Descubre mas sobre los parametros del ranking y como seleccionarlos y modificarlos. <span class="mas-informacion-link">Más información</span></p>
+                    <img src="../img/cruz.png" alt="Cruz">
+                </div>
+                
+                <div data-ng-repeat="property in properties">
+	                <div class="alojamiento1">
+	                    <div class="alojamiento1-img"><img src="../img/NH.JPG" alt="NH">
+	                        <div class="favoritos">
+				                <img data-ng-src="{{property.isFavorite ? '../img/favoritoRojo.png' : '../img/favoritoBlanco.png'}}" 
+				                     alt="favorito" 
+				                     data-ng-click="toggleFavorite(property)">
+				            </div>
+	                    </div>
+	                    <div class="alojamiento1-infoIzq">
+	                        <p id="tituloAlojamiento">{{property.name}}<img src="../img/estrellitas.JPG" alt="estrellitas"></p>
+	                        <p id="alojamientoLocalizacion">
+	                            <span class="mas-informacion-link">{{property.city}}</span>
+	                            <span class="mas-informacion-link">Mostrar en el mapa</span> a {{property.centerDistance}} m del centro
+	                        </p>
+	                        <img id="hojas" src="../img/hojas.JPG" alt="Hojas">
+	                        <p id="habitacion-info">{{property.description}}</p>
+	                        <p id="cama-info">Camas: 1 doble o 2 individuales</p>
+	                        <p id="aviso-info">
+							    Habitaciones disponibles: 
+							    <span data-ng-if="property.available == 1">sí</span>
+							    <span data-ng-if="property.available != 1">no</span>
+							</p>
+	                    </div>
+	                    <div class="alojamiento1-infoDer">
+	                        <div class="valoracion">
+	                            <p>Fabuloso</p>
+	                            <div class="valoracion-numerica">{{property.gradesAverage}}</div>
+	                        </div>
+	                        <p id="comentarios">4.559 comentarios</p>
+	                        <p id="ubicacion">Ubicacion 9,6</p>
+	                        <p id="noches">2 noches, 2 adultos</p>
+	                        <p id="precio">€ 285</p>
+	                        <p id="impuestos">Incluye impuestos y cargos</p>
+	
+	                        <div class="Disponibilidad">
+	                            <button id="verDisponibilidadBtn" class="verDisponibilidad" type="submit" data-ng-click="verDisponibilidad(property.id)">Ver disponibilidad</button>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-text">
+            <p id="ahorraTiempo">¡Ahorra tiempo y dinero!</p>
+            <p>Regístrate y te enviamos las mejores ofertas para ti.</p>
+        </div>
+
+        <form>
+            <input type="email" class="email-input" placeholder="Tu dirección de e-mail">
+            <button type="submit" class="subscribe-button">¡Suscríbete!</button>
+        </form>
+    </div>
+
+    <script>
+        const presupuestoInput = document.getElementById('presupuesto');
+        const cantidadDinero = document.getElementById('cantidad-dinero');
+
+        presupuestoInput.addEventListener('input', () => {
+            const valorPresupuesto = presupuestoInput.value;
+            cantidadDinero.textContent = `$${valorPresupuesto}`;
+        });
+
+        function activarBoton(boton) {
+            // Desactivar todos los botones
+            let botones = document.querySelectorAll('.boton');
+            botones.forEach(b => b.classList.remove('activado'));
+
+            // Activar el botón clicado
+            boton.classList.add('activado');
+        }
+
+        document.getElementById('verDisponibilidadBtn').addEventListener('click', function() {
+            // Redirige a la página index4.html
+            window.location.href = 'index4.html';
+        });
+    </script>

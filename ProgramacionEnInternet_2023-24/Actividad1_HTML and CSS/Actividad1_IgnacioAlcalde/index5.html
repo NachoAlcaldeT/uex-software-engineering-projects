@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Nacho Alcalde">
+
+    <title>Booking.com</title>
+
+    <link href="style5.css" type="text/css" rel="stylesheet" media="">
+    <link rel="icon" href="img/icono.svg">
+</head>
+
+<body>
+    <header>
+        <div id="bannerAzul">
+            <div class="cabecera">
+                <h3>Booking.com</h3>
+
+                <p id="EUR">EUR</p>
+
+                <div id="icono1" class="iconosInicioSesion"><img src="img/bandera.png" alt="Bandera" width="30"></div>
+                <div id="icono2" class="iconosInicioSesion"><img src="img/ayudaWhite.png" alt="Ayuda" width="30"></div>
+                <p>Registra tu alojamiento</p>
+
+                <button id="inicioSesion" class="inicioSesion">Inicia sesión</button>
+                <button class="inicioSesion">Hazte una cuenta</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="pasosCarrito">
+            <div class="paso">
+                <div class="circulo azul">✓</div>
+                <p class="textoPaso">Tu selección</p>
+            </div>
+            <hr class="linea">
+            <div class="paso">
+                <div class="circulo azul">2</div>
+                <p class="textoPaso">Tus datos</p>
+            </div>
+            <hr class="linea">
+            <div class="paso">
+                <div class="circulo blanco">3</div>
+                <p class="textoPaso">Último paso</p>
+            </div>
+        </div>
+        <div class="sections">
+            <div class="left-section">
+                <div class="top-div">
+                    <p id="hotel">Hotel<img src="img/estrellitas.JPG" alt="Estrellas"></p>
+                    <h3>NH Collection Cáceres Palacio de Oquendo</h3>
+                    <p id="ubicacion">Plaza de San Juan, 11, 10003 Cáceres, España</p>
+                    <p id="valoracionUbicacion">Excelente Ubicacion - 9.6</p>
+                    <div class="valoracion">
+                        <div class="valoracion-numerica">8,7</div>
+                        <p>Fabuloso . 4559 comentarios</p>
+                    </div>
+                    <div class="servicios">
+                        <div class="requisitosPopulares">
+                            <div class="populares"><img src="img/mascotas.png" alt="mascotas">Admite mascotas</div>
+                            <div class="populares"><img src="img/wifi.png" alt="wifi">WiFi</div>
+                            <div class="populares"><img src="img/parking.png" alt="parking">Parking</div>
+                        </div>
+                        <div class="requisitosPopulares">
+                            <div class="populares"><img src="img/restaurante.png" alt="restaurante">Restaurante</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="medium-div">
+                    <h3>Los datos de tu reserva</h3>
+                    <div class="reserva">
+                        <div class="entradaSalida">
+                            <p>Entrada</p>
+                            <p class="fecha">vie, 26 ene 2024</p>
+                            <p class="hora">De 15:00</p>
+                        </div>
+                        <div class="separador"></div>
+                        <div class="entradaSalida">
+                            <p>Salida</p>
+                            <p class="fecha">dom, 28 ene 2024</p>
+                            <p class="hora">07:00 - 12:00</p>
+                        </div>
+                    </div>
+                    <p id="duracion">Duración total de la estancia:</p>
+                    <p id="noches">2 noches</p>
+                    <div class="separador-linea"></div>
+                    <p>Has seleccionado</p>
+                    <p id="seleccion">1 habitación para 2 adultos</p>
+                    <p id="eleccion"><a href="#" class="blue-link">Cambia tu eleccion</a></p>
+                </div>
+                <div class="bottom-div">
+                    <h3>Desglose del precio</h3>
+                    <div class="importeTotal">
+                        <p id="total">Total</p>
+                        <p id="cantidad">€ 285</p>
+                        <p id="impuestos">Incluye impuestos y cargos</p>
+                    </div>
+                    <h3>Informacion sobre el precio</h3>
+                    <div class="impuestosCargos"><img src="img/billete.png" alt="Billete">Incluye € 25,91 de impuestos y cargos</div>
+                    <p id="iva">10% IVA</p>
+                    <p id="dineroIva">€ 25,91</p>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="top-divRight">
+                    ¡<img src="img/usuario.png" alt="Usuario"><a href="#" class="blue-link">Inicia sesión</a> para reservar con los datos que tienes guardados o <a href="#" class="blue-link">crea una cuenta</a> para gestionar tus reservas sobre la marcha!
+                </div>
+                <div class="introduceTusDatos">
+                    <h1>Introduce tus datos</h1>
+                    <div class="rellenarCampos">
+                        <img src="img/informacion.png" alt="Información">¡Ya casi estás! Solo tienes que rellenar los campos marcados con *
+                    </div>
+                    <div class="cuestionario">
+                        <div class="casilla">
+                            <label for="nombre">Nombre*</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" class="inputAncho">
+                        </div>
+
+                        <div class="casillaApellido">
+                            <label for="apellido">Apellido*</label>
+                            <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" class="inputAncho">
+                        </div>
+
+                        <div class="casillaEmail">
+                            <label for="email">E-mail*</label>
+                            <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" class="inputAncho">
+                        </div>
+                        <p>El e-mail de confirmación se enviará a esta dirección.</p>
+
+                        <div class="casillaPais">
+                            <label for="pais">Pais/región*</label>
+                            <select id="pais" name="pais" class="inputAncho">
+                                <option value="espana">España</option>
+                            </select>
+                        </div>
+
+                        <div class="casillaTelefono">
+                            <label for="telefono">Teléfono (móvil, si es posible)*</label>
+                            <div class="telefonoInput">
+                                <input type="text" id="telefono" name="telefono" placeholder="+34" class="inputAncho">
+                            </div>
+                        </div>
+                        <p>El alojamiento lo necesita para validar tu reserva</p>
+                    </div>
+                    <section class="checkbox-section">
+                        <input type="checkbox"><label>Sí, quiero recibir la confirmación digital gratis (recomendado)</label>
+                    </section>
+                    <p id="sms">Te enviaremos un enlace por SMS para descargar la app</p>
+                    <div class="separador-linea"></div>
+
+                    <div class="checkboxAdicional">
+                        <p>¿Para quién es esta reserva?</p>
+                        <div class="checkboxReserva">
+                            <input type="checkbox" id="paraMi" name="paraMi">
+                            <label for="paraMi">La reserva es para mí</label>
+                        </div>
+                        <div class="checkboxReserva">
+                            <input type="checkbox" id="paraOtraPersona" name="paraOtraPersona">
+                            <label for="paraOtraPersona">La reserva es para otra persona</label>
+                        </div>
+                        <p>¿Viajas por trabajo?</p>
+                        <div class="checkboxSiNo">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="siCheckbox" name="siCheckbox">
+                                <label for="siCheckbox">Sí</label>
+                            </div>
+
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="noCheckbox" name="noCheckbox">
+                                <label for="noCheckbox">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="#">Sobre Booking.com</a>
+        <a href="#">Atención al cliente</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Política de privacidad y cookies</a>
+        <a href="#">Gestiona las recomendaciones personalizadas</a>
+    </div>
+
+    <script>
+        document.getElementById('inicioSesion').addEventListener('click', function() {
+            // Redirige a la página index5.html
+            window.location.href = 'index6.html';
+        });
+    </script>
+
+
+</body>
+
+</html>

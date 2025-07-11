@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Nacho Alcalde">
+
+    <title>Booking.com</title>
+
+    <link href="style3.css" type="text/css" rel="stylesheet" media="">
+    <link rel="icon" href="img/icono.svg">
+</head>
+
+<body>
+    <header>
+        <div id="bannerAzul">
+            <div class="cabecera">
+                <h3>Booking.com</h3>
+
+                <p id="EUR">EUR</p>
+
+                <div id="icono1" class="iconosInicioSesion"><img src="img/bandera.png" alt="Bandera" width="30"></div>
+                <div id="icono2" class="iconosInicioSesion"><img src="img/ayudaWhite.png" alt="Ayuda" width="30"></div>
+
+                <p>Registra tu alojamiento</p>
+
+                <button class="inicioSesion">Inicia sesión</button>
+                <button class="inicioSesion">Hazte una cuenta</button>
+            </div>
+
+            <div class="botones-container">
+                <button class="boton" onclick="activarBoton(this)"><img class="iconoBotones" src="img/alojamientoWhite.png" alt="Alojamiento">Alojamiento</button>
+                <button class="boton" onclick="activarBoton(this)"><img class="iconoBotones" src="img/vueloWhite.png" alt="Vuelos">Vuelos</button>
+                <button class="boton" onclick="activarBoton(this)"><img class="iconoBotones" src="img/hotelWhite.png" alt="Vuelo + Hotel">Vuelo + Hotel</button>
+                <button class="boton" onclick="activarBoton(this)"><img class="iconoBotones" src="img/cocheWhite.png" alt="Alquiler de coches">Alquiler de coches</button>
+                <button class="boton" onclick="activarBoton(this)"><img class="iconoBotones" src="img/noriaWhite.png" alt="Atracciones turísticas">Atracciones turísticas</button>
+                <button class="boton" onclick="activarBoton(this)"><img class="iconoBotones" src="img/taxiWhite.png" alt="Taxis aeropuerto">Taxis aeropuerto</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <nav>
+            <div class="nav-rectangle">
+                <div class="filter-option"><img src="img/coche.png" alt="¿A dónde vas?">¿A dónde vas?</div>
+                <div class="filter-option"><img src="img/calendario.png" alt="Fecha de entrada - Fecha de salida">Fecha de entrada - Fecha de salida</div>
+                <div class="filter-option"><img src="img/usuario.png" alt="2 adultos - 0 niños - 1 habitación">2 adultos - 0 niños - 1 habitación</div>
+                <button id="search-button">Buscar</button>
+            </div>
+        </nav>
+
+        <p>Inicio > España > Extremadura > Caceres > Resultados de la búsqueda</p>
+
+        <div class="sections">
+            <div class="left-section">
+
+                <div class="top-div">
+                    <button class="ver-mapa-button">Ver en el mapa</button>
+                    <img src="img/mapa.jpg" alt="Mapa">
+                </div>
+
+                <div class="bottom-div">
+                    <p class="filtros">Filtrar por:</p>
+                    <div class="separador-linea"></div>
+                    <p class="tu-presupuesto">Tu presupuesto (por noche)</p>
+                    <p id="cantidad-dinero">500</p>
+                    <input type="range" id="presupuesto" min="0" max="1000" step="10" value="500">
+                    <div class="separador-linea"></div>
+
+                    <div class="filtros-populares">
+                        <p>Filtros populares:</p>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox1" value="hoteles">
+                            <p>Hoteles</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox2" value="hoteles">
+                            <p>Desayuno incluido</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>4 estrellas</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Fantastico: 9 o más</p>
+                        </div>
+
+                        <p id="fantastico">Según los comentarios de los clientes</p>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Hostales y pensiones</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Cancelación gratis</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Parking</p>
+                        </div>
+
+                        <div class="checkbox-filtros">
+                            <input type="checkbox" name="checkbox3" value="hoteles">
+                            <p>Villas</p>
+                        </div>
+                    </div>
+
+
+                    <!--<div class="separador-linea"></div>-->
+
+                </div>
+            </div>
+            <div class="right-section">
+                <p>Cáceres: 44 alojamientos encontrados</p>
+
+                <div class="orden-filtro">↓↑ Ordenar por: Nuestros destacados</div>
+                <div class="informacion-extra1">
+                    <img src="img/informacion.png" alt="Información">
+                    <p>Un 79% de los alojamientos ya no estan disponibles en nuestra web para esas fechas.</p>
+                    <img src="img/cruz.png" alt="Cruz">
+                </div>
+                <div class="informacion-extra2">
+                    <p>La comisión que pagan por alojamientos por las reservas y otros factores pueden influir en su puesto en el ranking. Descubre mas sobre los parametros del ranking y como seleccionarlos y modificarlos. <span class="mas-informacion-link">Más información</span></p>
+                    <img src="img/cruz.png" alt="Cruz">
+                </div>
+                <div class="alojamiento1">
+                    <div class="alojamiento1-img"><img src="/img/NH.JPG" alt="NH"></div>
+                    <div class="alojamiento1-infoIzq">
+                        <p id="tituloAlojamiento">NH Collection Cáceres Palacio de Oquendo<img src="img/estrellitas.JPG" alt="estrellitas"></p>
+                        <p id="alojamientoLocalizacion">
+                            <span class="mas-informacion-link">Cáceres</span>
+                            <span class="mas-informacion-link">Mostrar en el mapa</span> a 200 m del centro
+                        </p>
+                        <img id="hojas" src="img/hojas.JPG" alt="Hojas">
+                        <p id="habitacion-info">Habitación Doble Superior -1 o 2 camas</p>
+                        <p id="cama-info">Camas: 1 doble o 2 individuales</p>
+                        <p id="aviso-info">Solo queda 1 habitación a este precio en nuestra web</p>
+                    </div>
+                    <div class="alojamiento1-infoDer">
+                        <div class="valoracion">
+                            <p>Fabuloso</p>
+                            <div class="valoracion-numerica">8,7</div>
+                        </div>
+                        <p id="comentarios">4.559 comentarios</p>
+                        <p id="ubicacion">Ubicacion 9,6</p>
+                        <p id="noches">2 noches, 2 adultos</p>
+                        <p id="precio">€ 285</p>
+                        <p id="impuestos">Incluye impuestos y cargos</p>
+
+                        <div class="Disponibilidad">
+                            <button id="verDisponibilidadBtn" class="verDisponibilidad">Ver disponibilidad   ></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alojamiento1">
+                    <div class="alojamiento1-img"><img src="/img/plazaItalia.JPG" alt="Hostal Plaza de Italia"></div>
+                    <div class="alojamiento1-infoIzq">
+                        <p id="tituloAlojamiento">Hostal Plaza de Italia<img src="img/estrellitas.JPG" alt="estrellitas"></p>
+                        <p id="alojamientoLocalizacion">
+                            <span class="mas-informacion-link">Cáceres</span>
+                            <span class="mas-informacion-link">Mostrar en el mapa</span> a 400 m del centro
+                        </p>
+                        <img id="hojas" src="img/hojas.JPG" alt="Hojas">
+                        <p id="habitacion-info">Habitación Doble Económica</p>
+                        <p id="cama-info">1 cama doble</p>
+                        <p id="aviso-info">Solo queda 1 habitación a este precio en nuestra web</p>
+                    </div>
+                    <div class="alojamiento1-infoDer">
+                        <div class="valoracion">
+                            <p>Muy bien</p>
+                            <div class="valoracion-numerica">8,3</div>
+                        </div>
+                        <p id="comentarios">808 comentarios</p>
+                        <p id="ubicacion">Ubicacion 9,6</p>
+                        <p id="noches">2 noches, 2 adultos</p>
+                        <p id="precio">€ 149</p>
+                        <p id="impuestos">Incluye impuestos y cargos</p>
+
+                        <div class="Disponibilidad">
+                            <button class="verDisponibilidad">Ver disponibilidad   ></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="alojamiento2">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-text">
+            <p id="ahorraTiempo">¡Ahorra tiempo y dinero!</p>
+            <p>Regístrate y te enviamos las mejores ofertas para ti.</p>
+        </div>
+
+        <form>
+            <input type="email" class="email-input" placeholder="Tu dirección de e-mail">
+            <button type="submit" class="subscribe-button">¡Suscríbete!</button>
+        </form>
+    </div>
+
+    <div class="registroSesion">
+        <button class="registroSesion-button">Registra tu alojamiento</button>
+    </div>
+
+    <script>
+        const presupuestoInput = document.getElementById('presupuesto');
+        const cantidadDinero = document.getElementById('cantidad-dinero');
+
+        presupuestoInput.addEventListener('input', () => {
+            const valorPresupuesto = presupuestoInput.value;
+            cantidadDinero.textContent = `$${valorPresupuesto}`;
+        });
+
+        function activarBoton(boton) {
+            // Desactivar todos los botones
+            let botones = document.querySelectorAll('.boton');
+            botones.forEach(b => b.classList.remove('activado'));
+
+            // Activar el botón clicado
+            boton.classList.add('activado');
+        }
+
+        document.getElementById('verDisponibilidadBtn').addEventListener('click', function() {
+            // Redirige a la página index4.html
+            window.location.href = 'index4.html';
+        });
+    </script>
+
+</body>
+
+</html>

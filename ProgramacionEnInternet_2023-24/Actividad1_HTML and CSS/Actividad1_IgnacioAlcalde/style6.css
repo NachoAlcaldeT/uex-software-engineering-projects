@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+}
+
+#bannerAzul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #1b3b94;
+}
+
+.cabecera {
+    position: relative;
+    margin: 10px auto;
+    width: 1150px;
+    /*background-color: rgba(221, 231, 241, 0.103);*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecera h3 {
+    font-size: 25px;
+    margin-right: 280px;
+    color: white;
+}
+
+#EUR {
+    margin-right: 20px;
+}
+
+.iconosInicioSesion {
+    text-align: center;
+}
+
+#icono1,
+#icono2 {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.cabecera p {
+    color: white;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.inicioSesion {
+    background-color: white;
+    color: rgb(7, 98, 172);
+    font-size: 15px;
+    width: 150px;
+    height: 40px;
+    margin: 10px 10px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.container {
+    position: relative;
+    margin: 175px auto;
+    margin-top: 110px;
+    width: 1150px;
+    height: 600px;
+    /*background-color: rgb(255, 164, 136);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#inicio_reservas {
+    width: 100%;
+    height: 30px;
+    display: flex;
+}
+
+#titulo {
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#pregunta_inicial_reservas {
+    color: #006ce4;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 730px;
+}
+
+.blue-link {
+    color: #007BFF;
+    /* Cambiar el color del texto a azul (#007BFF) */
+    text-decoration: underline;
+    /* Añadir subrayado a los enlaces */
+}
+
+.Reserva {
+    width: 100%;
+    height: 170px;
+}
+
+.Ubicacion_reserva {
+    margin-top: 20px;
+    margin-bottom: 3px;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fechas_reserva {
+    color: rgba(0, 0, 0, 0.741);
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+#Desc_reserva {
+    height: 100px;
+    border: 1px solid grey;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#foto_reserva {
+    margin-left: 20px;
+    margin-top: 5px;
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+}
+
+.Nombre_hotel_reserva {
+    margin-left: 10px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.Fechas_reserva_rectangulo {
+    margin-left: 10px;
+    color: black;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.Precio_reserva {
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-left: 650px;
+}
+
+#foto_menu_reserva {
+    margin-left: 35px;
+    width: 23px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #d1d1d1;
+    /* Fondo gris clarito */
+    color: #007BFF;
+    /* Color azul para los enlaces */
+    text-align: center;
+    padding: 20px;
+}
+
+.footer a {
+    color: #007BFF;
+    /* Color azul para los enlaces */
+    text-decoration: none;
+    margin: 0 10px;
+    /* Márgenes entre los enlaces */
+}

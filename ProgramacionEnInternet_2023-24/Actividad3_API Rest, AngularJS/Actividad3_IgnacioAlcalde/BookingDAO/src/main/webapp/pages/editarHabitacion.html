@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="../css/editarHabitacion.css">
+    <div class="container">
+
+        <form data-ng-submit="habitacion.functions.editarAccommodation()">
+	        <div class="input-group">
+	            <label for="nombreAlojamiento">Nombre del alojamiento</label>
+	            <input type="text" id="nombreAlojamiento" name="name" data-ng-model="habitacion.accommodation.name" required>
+	        </div>
+	
+	        <div class="input-group">
+	            <label for="descripcion">Descripcion de la habitacion</label>
+	            <input type="text" id="descripcion" name="description" data-ng-model="habitacion.accommodation.description" required>
+	        </div>
+	
+	        <div class="input-group">
+	            <label for="precio">Precio por noche</label>
+	            <input type="number" id="precio" name="price" data-ng-model="habitacion.accommodation.price" required>
+	        </div>
+	
+	        <div class="input-group">
+	            <label for="habitaciones">Numero de habitaciones</label>
+	            <input type="number" id="habitaciones" name="numAccommodations" data-ng-model="habitacion.accommodation.numAccommodations" required>
+	        </div>
+	
+	        <button id="guardarCambios" type= "submit">Guardar cambios</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <a href="#">Sobre Booking.com</a>
+        <a href="#">Atención al cliente</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Política de privacidad y cookies</a>
+        <a href="#">Gestiona las recomendaciones personalizadas</a>
+    </div>

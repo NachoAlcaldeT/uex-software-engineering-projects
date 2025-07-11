@@ -1,0 +1,227 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Nacho Alcalde">
+    <title>Booking.com</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="icon" href="img/icono.svg">
+</head>
+
+<body>
+
+    <header>
+    <div id="bannerAzul">
+        <div id="encuentraEstancia">
+            <h1>Encuentra tu próxima estancia</h1>
+            <h4>Busca ofertas en hoteles, casas y mucho más...</h4>
+        </div>
+        <c:choose>
+            <c:when test="${not empty user.id}">
+                <a href="PerfilServlet.do"><button class="inicioSesion">Perfil</button></a>
+            </c:when>
+            <c:otherwise>
+                <div id="botonesInicioSesion">
+                    <a href="LoginServlet.do"><button class="inicioSesion">Inicia sesión</button></a>
+                    <a href="RegistroServlet.do"><button class="inicioSesion">Hazte una cuenta</button></a>
+                </div>
+            </c:otherwise>
+        	</c:choose>
+    	</div>
+	</header>
+
+
+    <div class="container">
+        <form action="AlojamientoServlet.do" method="GET">
+            <nav>
+                <div class="nav-rectangle">
+                    <div class="filter-option">
+                        <img src="img/coche.png" alt="¿A dónde vas?">
+                        <input type="text" name="destino" placeholder="¿A dónde vas?" style="width: 150px;">
+                    </div>
+                    <div class="filter-option">
+                        <img src="img/calendario.png" alt="Fecha de entrada - Fecha de salida">
+                        <input type="date" name="fecha_entrada">
+                        <input type="date" name="fecha_salida">
+                    </div>
+                    <div class="filter-option">
+                        <img src="img/usuario.png" alt="2 adultos - 0 niños - 1 habitación">
+                        <input type="number" name="adultos" placeholder="Adultos" style="width: 60px;">
+                        <input type="number" name="niños" placeholder="Niños" style="width: 80px;">
+                        <input type="number" name="habitaciones" placeholder="Habitaciones" style="width: 100px;">
+                    </div>
+                     <button type="submit" id="search-button">Buscar</button>
+                </div>
+            </nav>
+        </form>
+
+        <div class="content-container">
+            <!-- Tu contenido va aquí -->
+
+            <section class="checkbox-section">
+                <input type="checkbox" id="viajeTrabajo"><label for="viajeTrabajo">Viajo por trabajo</label>
+                <input type="checkbox" id="BuscarVuelos"><label for="BuscarVuelos">Busco vuelos</label>
+            </section>
+
+            <section class="ofertas">
+                <h2>Ofertas</h2>
+                <p>Promociones, Descuentos y ofertas especiales para ti</p>
+
+                <div class="ofertas-container">
+                    <div class="oferta">
+                        <h3>Disfruta de tus vacaciones más largas:</h3>
+                        <p>Busca alojamientos que ofrezcan estancias largas, hay muchas con tarifa mensual reducida.</p>
+                        <img src="img/oferta.jpg" alt="Oferta 1">
+                        <button class="estancia">Elige tu estancia</button>
+                    </div>
+                    <div class="oferta">
+                        <h3>Vuela al destino de tus sueños</h3>
+                        <p>Inspírate, compara y reserva vuelos con más flexibilidad</p>
+                        <img src="img/avion.JPG" alt="Oferta 2">
+                        <button class="estancia">Buscar vuelos</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="descubreEspaña">
+                <h2>Descubre España</h2>
+                <p>Estos destinos populares tienen mucho que ofrecer</p>
+                <div class="descubre">
+                    <div class="imagen4">
+                        <img class="ciudad" src="img/granCanarias.jpg" alt="Gran Canaria">
+                        <p class="nombreCiudad">Gran Canaria</p>
+                        <p>5.971 alojamientos</p>
+                    </div>
+                    <div class="imagen4">
+                        <img class="ciudad" src="img/Maspalomas.jpg" alt="Maspalomas">
+                        <p class="nombreCiudad">Maspalomas</p>
+                        <p>189 alojamientos</p>
+                    </div>
+                    <div class="imagen4">
+                        <img class="ciudad" src="img/tenerife.jpg" alt="Tenerife">
+                        <p class="nombreCiudad">Tenerife</p>
+                        <p>1.693 alojamientos</p>
+                    </div>
+                    <div class="imagen4">
+                        <img class="ciudad" src="img/galicia.jpg" alt="Galicia">
+                        <p class="nombreCiudad">Galicia</p>
+                        <p>3.427 alojamientos</p>
+                    </div>
+                    <div class="imagen4">
+                        <img class="ciudad" src="img/asturias.jpg" alt="Asturias">
+                        <p class="nombreCiudad">Asturias</p>
+                        <p>2.531 alojamientos</p>
+                    </div>
+                    <div class="imagen4">
+                        <img class="ciudad" src="img/salamanca.jpg" alt="Salamanca">
+                        <p class="nombreCiudad">Salamanca</p>
+                        <p>3.824 alojamientos</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="BuscarAlojamiento">
+                <h2>Busca por tipo de alojamiento</h2>
+
+                <div class="tipoAlojamiento-container">
+                    <div class="tipoAlojamiento">
+                        <img src="img/hoteles.jpeg" alt="Hoteles">
+                        <p>Hoteles</p>
+                    </div>
+                    <div class="tipoAlojamiento">
+                        <img src="img/apartamentos.jpeg" alt="Apartamentos">
+                        <p>Apartamentos</p>
+                    </div>
+                    <div class="tipoAlojamiento">
+                        <img src="img/resorts.jpeg" alt="Resorts">
+                        <p>Resorts</p>
+                    </div>
+                    <div class="tipoAlojamiento">
+                        <img src="img/villas.jpeg" alt="Villas">
+                        <p>Villas</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="destinosGustosos">
+                <h2>Destinos que más nos gustan</h2>
+
+                <div class="botones-container">
+                    <button class="boton" onclick="activarBoton(this)">Regiones</button>
+                    <button class="boton" onclick="activarBoton(this)">Cuidades</button>
+                    <button class="boton" onclick="activarBoton(this)">Lugares de interés</button>
+                </div>
+
+                <table>
+                    <tr>
+                        <td><strong>Mallorca</strong><br>10.774 alojamientos</td>
+                        <td><strong>Lanzarote</strong><br>3.962 alojamientos</td>
+                        <td><strong>La Gomera</strong><br>490 alojamientos</td>
+                        <td><strong>Algarve</strong><br>12.541 alojamientos</td>
+                        <td><strong>Fuerteventura</strong><br>2.912 alojamientos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Formentera</strong><br>399 alojamientos</td>
+                        <td><strong>Asturias</strong><br>3.310 alojamientos</td>
+                        <td><strong>El Hierro</strong><br>333 alojamientos</td>
+                        <td><strong>Costa Brava</strong><br>10.258 alojamientos</td>
+                        <td><strong>Menorca</strong><br>1.696 alojamientos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cantabria</strong><br>1.925 alojamientos</td>
+                        <td><strong>Tenerife Sur</strong><br>6.826 alojamientos</td>
+                        <td><strong>Gran Canaria</strong><br>5.976 alojamientos</td>
+                        <td><strong>Isla de La Graciosa</strong><br>49 alojamientos</td>
+                        <td><strong>Bora Bora</strong><br>59 alojamientos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sierra Norte de Madrid</strong><br>158 alojamientos</td>
+                        <td><strong>Costa de Almería</strong><br>2.018 alojamientos</td>
+                        <td><strong>Tenerife</strong><br>9.632 alojamientos</td>
+                        <td><strong>Ibiza</strong><br>1.660 alojamientos</td>
+                        <td><strong>Galicia</strong><br>6.561 alojamientos</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-text">
+            <p id="ahorraTiempo">¡Ahorra tiempo y dinero!</p>
+            <p>Regístrate y te enviamos las mejores ofertas para ti.</p>
+        </div>
+
+        <form>
+            <input type="email" class="email-input" placeholder="Tu dirección de e-mail">
+            <button type="submit" class="subscribe-button">¡Suscríbete!</button>
+        </form>
+    </div>
+
+    <div class="registroSesion">
+        <button class="registroSesion-button">Registra tu alojamiento</button>
+    </div>
+
+    <script>
+        function activarBoton(boton) {
+
+            // Desactivar todos los botones
+            let botones = document.querySelectorAll('.boton');
+            botones.forEach(b => b.classList.remove('activado'));
+
+            // Activar el botón clicado
+            boton.classList.add('activado');
+        }
+        document.getElementById('search-button').addEventListener('click', function() {
+            // Redirige a la página index5.html
+            window.location.href = 'index3.html';
+        });
+    </script>
+
+</body>
+
+</html>
