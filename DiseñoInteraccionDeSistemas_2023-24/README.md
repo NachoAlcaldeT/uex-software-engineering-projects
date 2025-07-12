@@ -15,7 +15,7 @@ Este proyecto se centra en **el diseño iterativo de interfaces**, la **evaluaci
 
 > ℹ️ *Este proyecto es la continuación del trabajo realizado en la asignatura de **Ingeniería de Requisitos**, donde se definieron de forma profesional los requisitos funcionales y no funcionales del sistema, se modelaron casos de uso, se elaboró un prototipo conceptual interactivo y se validaron las necesidades del cliente mediante técnicas reales de elicitación y análisis.* 
 
-Puedes consultar la primera fase del proyecto aquí: 
+Puedes consultar la primera fase del proyecto aquí:  
 👉 [📋 Ingeniería de Requisitos – NodoPlay (2023/2024)](../IngenieriaDeRequisitos_2023-24)
 
 ---
