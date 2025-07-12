@@ -1,0 +1,2763 @@
+Gramática
+
+    0 $accept: entrada $end
+
+    1 entrada: blVars blMuebles Habitaciones
+    2        | salto blVars blMuebles Habitaciones
+
+    3 blVars: %empty
+
+    4 $@1: %empty
+
+    5 blVars: VARIABLES $@1 salto secDefVars
+
+    6 secDefVars: defVar
+    7           | secDefVars defVar
+
+    8 defVar: Enterovab identificadoresEntero salto
+    9       | Realvab identificadoresReal salto
+   10       | Boolvab identificadoresBool salto
+   11       | Enterovab IDVAB ASIG expr salto
+   12       | Realvab IDVAB ASIG expr salto
+   13       | Boolvab IDVAB ASIG expr_logica salto
+   14       | IDVAB ASIG expr salto
+   15       | IDVAB ASIG expr_logica salto
+
+   16 identificadoresEntero: IDVAB ',' identificadoresEntero
+   17                      | IDVAB
+
+   18 identificadoresReal: IDVAB ',' identificadoresReal
+   19                    | IDVAB
+
+   20 identificadoresBool: IDVAB ',' identificadoresBool
+   21                    | IDVAB
+
+   22 $@2: %empty
+
+   23 blMuebles: MUEBLES $@2 salto secDefMbls
+
+   24 secDefMbls: defMbls
+   25           | secDefMbls defMbls
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor ',' valor ',' color MAYOR salto
+   27        | Nombre IGUALMUEBLES MENOR circulo ',' valor ',' color MAYOR salto
+
+   28 color: negro
+   29      | gris
+   30      | verde
+   31      | marron
+   32      | amarillo
+   33      | rojo
+   34      | azul
+
+   35 valor: expr
+
+   36 Habitaciones: blHabitaciones
+   37             | Habitaciones blHabitaciones
+
+   38 $@3: %empty
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+   40 secDefHabs: defHabs
+   41           | secDefHabs defHabs
+
+   42 secDefHabs2: defHabs2
+   43            | secDefHabs2 defHabs2
+
+   44 defHabs: situar '(' Nombre ',' valor ',' valor ')' salto
+   45        | mensaje '(' CADENA ')' salto
+   46        | pausa '(' expr ')' salto
+   47        | IDVAB ASIG expr salto
+   48        | IDVAB ASIG expr_logica salto
+   49        | si_bloque
+
+   50 defHabs2: situar '(' Nombre ',' valor ',' valor ')' salto
+   51         | mensaje '(' CADENA ')' salto
+   52         | pausa '(' valor ')' salto
+   53         | IDVAB ASIG expr salto
+   54         | IDVAB ASIG expr_logica salto
+
+   55 $@4: %empty
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+
+   57 salto: '\n'
+   58      | salto '\n'
+
+   59 expr: ENTERO
+   60     | REAL
+   61     | IDVAB
+   62     | expr '+' expr
+   63     | expr '-' expr
+   64     | expr '*' expr
+   65     | expr '/' expr
+   66     | expr DIVENT expr
+   67     | expr '%' expr
+   68     | '-' expr
+   69     | '(' expr ')'
+
+   70 expr_logica: CIERTO
+   71            | FALSO
+   72            | expr_logica IGUAL expr_logica
+   73            | expr_logica DISTINTO expr_logica
+   74            | expr_logica y expr_logica
+   75            | expr_logica o expr_logica
+   76            | no expr_logica
+   77            | expr MENORIGUAL expr
+   78            | expr MAYORIGUAL expr
+   79            | expr MENOR expr
+   80            | expr MAYOR expr
+   81            | expr IGUAL expr
+   82            | expr DISTINTO expr
+   83            | '(' expr_logica ')'
+
+
+Terminales con las reglas donde aparecen
+
+$end (0) 0
+'\n' (10) 57 58
+'%' (37) 67
+'(' (40) 39 44 45 46 50 51 52 56 69 83
+')' (41) 39 44 45 46 50 51 52 56 69 83
+'*' (42) 64
+'+' (43) 62
+',' (44) 16 18 20 26 27 39 44 50
+'-' (45) 63 68
+'/' (47) 65
+'{' (123) 56
+'}' (125) 56
+error (256)
+REAL (258) 60
+ENTERO (259) 59
+Nombre (260) 26 27 44 50
+IDVAB (261) 11 12 13 14 15 16 17 18 19 20 21 47 48 53 54 61
+rectangulo (262) 26
+circulo (263) 27
+VARIABLES (264) 5
+MUEBLES (265) 23
+HABITACION (266) 39
+Enterovab (267) 8 11
+Realvab (268) 9 12
+Boolvab (269) 10 13
+IGUALMUEBLES (270) 26 27
+negro (271) 28
+amarillo (272) 32
+gris (273) 29
+rojo (274) 33
+azul (275) 34
+marron (276) 31
+verde (277) 30
+PUNTOS (278) 39
+FINHABITACION (279) 39
+situar (280) 44 50
+mensaje (281) 45 51
+pausa (282) 46 52
+CADENA (283) 39 45 51
+ASIG (284) 11 12 13 14 15 47 48 53 54
+DIVENT (285) 66
+MENORIGUAL (286) 77
+MAYORIGUAL (287) 78
+MENOR (288) 26 27 79
+MAYOR (289) 26 27 80
+DISTINTO (290) 73 82
+IGUAL (291) 72 81
+CIERTO (292) 70
+FALSO (293) 71
+no (294) 76
+si (295) 56
+si_no (296) 56
+y (297) 74
+o (298) 75
+menosunario (299)
+
+
+No terminales con las reglas donde aparecen
+
+$accept (56)
+    en la izquierda: 0
+entrada (57)
+    en la izquierda: 1 2, en la derecha: 0
+blVars (58)
+    en la izquierda: 3 5, en la derecha: 1 2
+$@1 (59)
+    en la izquierda: 4, en la derecha: 5
+secDefVars (60)
+    en la izquierda: 6 7, en la derecha: 5 7
+defVar (61)
+    en la izquierda: 8 9 10 11 12 13 14 15, en la derecha: 6 7
+identificadoresEntero (62)
+    en la izquierda: 16 17, en la derecha: 8 16
+identificadoresReal (63)
+    en la izquierda: 18 19, en la derecha: 9 18
+identificadoresBool (64)
+    en la izquierda: 20 21, en la derecha: 10 20
+blMuebles (65)
+    en la izquierda: 23, en la derecha: 1 2
+$@2 (66)
+    en la izquierda: 22, en la derecha: 23
+secDefMbls (67)
+    en la izquierda: 24 25, en la derecha: 23 25
+defMbls (68)
+    en la izquierda: 26 27, en la derecha: 24 25
+color (69)
+    en la izquierda: 28 29 30 31 32 33 34, en la derecha: 26 27
+valor (70)
+    en la izquierda: 35, en la derecha: 26 27 39 44 50 52
+Habitaciones (71)
+    en la izquierda: 36 37, en la derecha: 1 2 37
+blHabitaciones (72)
+    en la izquierda: 39, en la derecha: 36 37
+$@3 (73)
+    en la izquierda: 38, en la derecha: 39
+secDefHabs (74)
+    en la izquierda: 40 41, en la derecha: 39 41 56
+secDefHabs2 (75)
+    en la izquierda: 42 43, en la derecha: 43 56
+defHabs (76)
+    en la izquierda: 44 45 46 47 48 49, en la derecha: 40 41
+defHabs2 (77)
+    en la izquierda: 50 51 52 53 54, en la derecha: 42 43
+si_bloque (78)
+    en la izquierda: 56, en la derecha: 49
+$@4 (79)
+    en la izquierda: 55, en la derecha: 56
+salto (80)
+    en la izquierda: 57 58, en la derecha: 2 5 8 9 10 11 12 13 14 15
+    23 26 27 39 44 45 46 47 48 50 51 52 53 54 56 58
+expr (81)
+    en la izquierda: 59 60 61 62 63 64 65 66 67 68 69, en la derecha:
+    11 12 14 35 46 47 53 62 63 64 65 66 67 68 69 77 78 79 80 81 82
+expr_logica (82)
+    en la izquierda: 70 71 72 73 74 75 76 77 78 79 80 81 82 83, en la derecha:
+    13 15 48 54 56 72 73 74 75 76 83
+
+
+Estado 0
+
+    0 $accept: . entrada $end
+
+    VARIABLES  desplazar e ir al estado 1
+    '\n'       desplazar e ir al estado 2
+
+    $default  reduce usando la regla 3 (blVars)
+
+    entrada  ir al estado 3
+    blVars   ir al estado 4
+    salto    ir al estado 5
+
+
+Estado 1
+
+    5 blVars: VARIABLES . $@1 salto secDefVars
+
+    $default  reduce usando la regla 4 ($@1)
+
+    $@1  ir al estado 6
+
+
+Estado 2
+
+   57 salto: '\n' .
+
+    $default  reduce usando la regla 57 (salto)
+
+
+Estado 3
+
+    0 $accept: entrada . $end
+
+    $end  desplazar e ir al estado 7
+
+
+Estado 4
+
+    1 entrada: blVars . blMuebles Habitaciones
+
+    MUEBLES  desplazar e ir al estado 8
+
+    blMuebles  ir al estado 9
+
+
+Estado 5
+
+    2 entrada: salto . blVars blMuebles Habitaciones
+   58 salto: salto . '\n'
+
+    VARIABLES  desplazar e ir al estado 1
+    '\n'       desplazar e ir al estado 10
+
+    $default  reduce usando la regla 3 (blVars)
+
+    blVars  ir al estado 11
+
+
+Estado 6
+
+    5 blVars: VARIABLES $@1 . salto secDefVars
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 12
+
+
+Estado 7
+
+    0 $accept: entrada $end .
+
+    $default  aceptar
+
+
+Estado 8
+
+   23 blMuebles: MUEBLES . $@2 salto secDefMbls
+
+    $default  reduce usando la regla 22 ($@2)
+
+    $@2  ir al estado 13
+
+
+Estado 9
+
+    1 entrada: blVars blMuebles . Habitaciones
+
+    HABITACION  desplazar e ir al estado 14
+
+    Habitaciones    ir al estado 15
+    blHabitaciones  ir al estado 16
+
+
+Estado 10
+
+   58 salto: salto '\n' .
+
+    $default  reduce usando la regla 58 (salto)
+
+
+Estado 11
+
+    2 entrada: salto blVars . blMuebles Habitaciones
+
+    MUEBLES  desplazar e ir al estado 8
+
+    blMuebles  ir al estado 17
+
+
+Estado 12
+
+    5 blVars: VARIABLES $@1 salto . secDefVars
+   58 salto: salto . '\n'
+
+    IDVAB      desplazar e ir al estado 18
+    Enterovab  desplazar e ir al estado 19
+    Realvab    desplazar e ir al estado 20
+    Boolvab    desplazar e ir al estado 21
+    '\n'       desplazar e ir al estado 10
+
+    secDefVars  ir al estado 22
+    defVar      ir al estado 23
+
+
+Estado 13
+
+   23 blMuebles: MUEBLES $@2 . salto secDefMbls
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 24
+
+
+Estado 14
+
+   39 blHabitaciones: HABITACION . '(' valor ',' valor ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+    '('  desplazar e ir al estado 25
+
+
+Estado 15
+
+    1 entrada: blVars blMuebles Habitaciones .
+   37 Habitaciones: Habitaciones . blHabitaciones
+
+    HABITACION  desplazar e ir al estado 14
+
+    $default  reduce usando la regla 1 (entrada)
+
+    blHabitaciones  ir al estado 26
+
+
+Estado 16
+
+   36 Habitaciones: blHabitaciones .
+
+    $default  reduce usando la regla 36 (Habitaciones)
+
+
+Estado 17
+
+    2 entrada: salto blVars blMuebles . Habitaciones
+
+    HABITACION  desplazar e ir al estado 14
+
+    Habitaciones    ir al estado 27
+    blHabitaciones  ir al estado 16
+
+
+Estado 18
+
+   14 defVar: IDVAB . ASIG expr salto
+   15       | IDVAB . ASIG expr_logica salto
+
+    ASIG  desplazar e ir al estado 28
+
+
+Estado 19
+
+    8 defVar: Enterovab . identificadoresEntero salto
+   11       | Enterovab . IDVAB ASIG expr salto
+
+    IDVAB  desplazar e ir al estado 29
+
+    identificadoresEntero  ir al estado 30
+
+
+Estado 20
+
+    9 defVar: Realvab . identificadoresReal salto
+   12       | Realvab . IDVAB ASIG expr salto
+
+    IDVAB  desplazar e ir al estado 31
+
+    identificadoresReal  ir al estado 32
+
+
+Estado 21
+
+   10 defVar: Boolvab . identificadoresBool salto
+   13       | Boolvab . IDVAB ASIG expr_logica salto
+
+    IDVAB  desplazar e ir al estado 33
+
+    identificadoresBool  ir al estado 34
+
+
+Estado 22
+
+    5 blVars: VARIABLES $@1 salto secDefVars .
+    7 secDefVars: secDefVars . defVar
+
+    IDVAB      desplazar e ir al estado 18
+    Enterovab  desplazar e ir al estado 19
+    Realvab    desplazar e ir al estado 20
+    Boolvab    desplazar e ir al estado 21
+
+    $default  reduce usando la regla 5 (blVars)
+
+    defVar  ir al estado 35
+
+
+Estado 23
+
+    6 secDefVars: defVar .
+
+    $default  reduce usando la regla 6 (secDefVars)
+
+
+Estado 24
+
+   23 blMuebles: MUEBLES $@2 salto . secDefMbls
+   58 salto: salto . '\n'
+
+    Nombre  desplazar e ir al estado 36
+    '\n'    desplazar e ir al estado 10
+
+    secDefMbls  ir al estado 37
+    defMbls     ir al estado 38
+
+
+Estado 25
+
+   39 blHabitaciones: HABITACION '(' . valor ',' valor ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 44
+    expr   ir al estado 45
+
+
+Estado 26
+
+   37 Habitaciones: Habitaciones blHabitaciones .
+
+    $default  reduce usando la regla 37 (Habitaciones)
+
+
+Estado 27
+
+    2 entrada: salto blVars blMuebles Habitaciones .
+   37 Habitaciones: Habitaciones . blHabitaciones
+
+    HABITACION  desplazar e ir al estado 14
+
+    $default  reduce usando la regla 2 (entrada)
+
+    blHabitaciones  ir al estado 26
+
+
+Estado 28
+
+   14 defVar: IDVAB ASIG . expr salto
+   15       | IDVAB ASIG . expr_logica salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 50
+    expr_logica  ir al estado 51
+
+
+Estado 29
+
+   11 defVar: Enterovab IDVAB . ASIG expr salto
+   16 identificadoresEntero: IDVAB . ',' identificadoresEntero
+   17                      | IDVAB .
+
+    ASIG  desplazar e ir al estado 52
+    ','   desplazar e ir al estado 53
+
+    $default  reduce usando la regla 17 (identificadoresEntero)
+
+
+Estado 30
+
+    8 defVar: Enterovab identificadoresEntero . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 54
+
+
+Estado 31
+
+   12 defVar: Realvab IDVAB . ASIG expr salto
+   18 identificadoresReal: IDVAB . ',' identificadoresReal
+   19                    | IDVAB .
+
+    ASIG  desplazar e ir al estado 55
+    ','   desplazar e ir al estado 56
+
+    $default  reduce usando la regla 19 (identificadoresReal)
+
+
+Estado 32
+
+    9 defVar: Realvab identificadoresReal . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 57
+
+
+Estado 33
+
+   13 defVar: Boolvab IDVAB . ASIG expr_logica salto
+   20 identificadoresBool: IDVAB . ',' identificadoresBool
+   21                    | IDVAB .
+
+    ASIG  desplazar e ir al estado 58
+    ','   desplazar e ir al estado 59
+
+    $default  reduce usando la regla 21 (identificadoresBool)
+
+
+Estado 34
+
+   10 defVar: Boolvab identificadoresBool . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 60
+
+
+Estado 35
+
+    7 secDefVars: secDefVars defVar .
+
+    $default  reduce usando la regla 7 (secDefVars)
+
+
+Estado 36
+
+   26 defMbls: Nombre . IGUALMUEBLES MENOR rectangulo ',' valor ',' valor ',' color MAYOR salto
+   27        | Nombre . IGUALMUEBLES MENOR circulo ',' valor ',' color MAYOR salto
+
+    IGUALMUEBLES  desplazar e ir al estado 61
+
+
+Estado 37
+
+   23 blMuebles: MUEBLES $@2 salto secDefMbls .
+   25 secDefMbls: secDefMbls . defMbls
+
+    Nombre  desplazar e ir al estado 36
+
+    $default  reduce usando la regla 23 (blMuebles)
+
+    defMbls  ir al estado 62
+
+
+Estado 38
+
+   24 secDefMbls: defMbls .
+
+    $default  reduce usando la regla 24 (secDefMbls)
+
+
+Estado 39
+
+   60 expr: REAL .
+
+    $default  reduce usando la regla 60 (expr)
+
+
+Estado 40
+
+   59 expr: ENTERO .
+
+    $default  reduce usando la regla 59 (expr)
+
+
+Estado 41
+
+   61 expr: IDVAB .
+
+    $default  reduce usando la regla 61 (expr)
+
+
+Estado 42
+
+   68 expr: '-' . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 63
+
+
+Estado 43
+
+   69 expr: '(' . expr ')'
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 64
+
+
+Estado 44
+
+   39 blHabitaciones: HABITACION '(' valor . ',' valor ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+    ','  desplazar e ir al estado 65
+
+
+Estado 45
+
+   35 valor: expr .
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 35 (valor)
+
+
+Estado 46
+
+   70 expr_logica: CIERTO .
+
+    $default  reduce usando la regla 70 (expr_logica)
+
+
+Estado 47
+
+   71 expr_logica: FALSO .
+
+    $default  reduce usando la regla 71 (expr_logica)
+
+
+Estado 48
+
+   76 expr_logica: no . expr_logica
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 72
+    expr_logica  ir al estado 73
+
+
+Estado 49
+
+   69 expr: '(' . expr ')'
+   83 expr_logica: '(' . expr_logica ')'
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 74
+    expr_logica  ir al estado 75
+
+
+Estado 50
+
+   14 defVar: IDVAB ASIG expr . salto
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   77 expr_logica: expr . MENORIGUAL expr
+   78            | expr . MAYORIGUAL expr
+   79            | expr . MENOR expr
+   80            | expr . MAYOR expr
+   81            | expr . IGUAL expr
+   82            | expr . DISTINTO expr
+
+    DIVENT      desplazar e ir al estado 66
+    MENORIGUAL  desplazar e ir al estado 76
+    MAYORIGUAL  desplazar e ir al estado 77
+    MENOR       desplazar e ir al estado 78
+    MAYOR       desplazar e ir al estado 79
+    DISTINTO    desplazar e ir al estado 80
+    IGUAL       desplazar e ir al estado 81
+    '+'         desplazar e ir al estado 67
+    '-'         desplazar e ir al estado 68
+    '*'         desplazar e ir al estado 69
+    '/'         desplazar e ir al estado 70
+    '%'         desplazar e ir al estado 71
+    '\n'        desplazar e ir al estado 2
+
+    salto  ir al estado 82
+
+
+Estado 51
+
+   15 defVar: IDVAB ASIG expr_logica . salto
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+    y         desplazar e ir al estado 85
+    o         desplazar e ir al estado 86
+    '\n'      desplazar e ir al estado 2
+
+    salto  ir al estado 87
+
+
+Estado 52
+
+   11 defVar: Enterovab IDVAB ASIG . expr salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 88
+
+
+Estado 53
+
+   16 identificadoresEntero: IDVAB ',' . identificadoresEntero
+
+    IDVAB  desplazar e ir al estado 89
+
+    identificadoresEntero  ir al estado 90
+
+
+Estado 54
+
+    8 defVar: Enterovab identificadoresEntero salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 8 (defVar)
+
+
+Estado 55
+
+   12 defVar: Realvab IDVAB ASIG . expr salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 91
+
+
+Estado 56
+
+   18 identificadoresReal: IDVAB ',' . identificadoresReal
+
+    IDVAB  desplazar e ir al estado 92
+
+    identificadoresReal  ir al estado 93
+
+
+Estado 57
+
+    9 defVar: Realvab identificadoresReal salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 9 (defVar)
+
+
+Estado 58
+
+   13 defVar: Boolvab IDVAB ASIG . expr_logica salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 72
+    expr_logica  ir al estado 94
+
+
+Estado 59
+
+   20 identificadoresBool: IDVAB ',' . identificadoresBool
+
+    IDVAB  desplazar e ir al estado 95
+
+    identificadoresBool  ir al estado 96
+
+
+Estado 60
+
+   10 defVar: Boolvab identificadoresBool salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 10 (defVar)
+
+
+Estado 61
+
+   26 defMbls: Nombre IGUALMUEBLES . MENOR rectangulo ',' valor ',' valor ',' color MAYOR salto
+   27        | Nombre IGUALMUEBLES . MENOR circulo ',' valor ',' color MAYOR salto
+
+    MENOR  desplazar e ir al estado 97
+
+
+Estado 62
+
+   25 secDefMbls: secDefMbls defMbls .
+
+    $default  reduce usando la regla 25 (secDefMbls)
+
+
+Estado 63
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   68     | '-' expr .
+
+    $default  reduce usando la regla 68 (expr)
+
+
+Estado 64
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   69     | '(' expr . ')'
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+    ')'     desplazar e ir al estado 98
+
+
+Estado 65
+
+   39 blHabitaciones: HABITACION '(' valor ',' . valor ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 99
+    expr   ir al estado 45
+
+
+Estado 66
+
+   66 expr: expr DIVENT . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 100
+
+
+Estado 67
+
+   62 expr: expr '+' . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 101
+
+
+Estado 68
+
+   63 expr: expr '-' . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 102
+
+
+Estado 69
+
+   64 expr: expr '*' . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 103
+
+
+Estado 70
+
+   65 expr: expr '/' . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 104
+
+
+Estado 71
+
+   67 expr: expr '%' . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 105
+
+
+Estado 72
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   77 expr_logica: expr . MENORIGUAL expr
+   78            | expr . MAYORIGUAL expr
+   79            | expr . MENOR expr
+   80            | expr . MAYOR expr
+   81            | expr . IGUAL expr
+   82            | expr . DISTINTO expr
+
+    DIVENT      desplazar e ir al estado 66
+    MENORIGUAL  desplazar e ir al estado 76
+    MAYORIGUAL  desplazar e ir al estado 77
+    MENOR       desplazar e ir al estado 78
+    MAYOR       desplazar e ir al estado 79
+    DISTINTO    desplazar e ir al estado 80
+    IGUAL       desplazar e ir al estado 81
+    '+'         desplazar e ir al estado 67
+    '-'         desplazar e ir al estado 68
+    '*'         desplazar e ir al estado 69
+    '/'         desplazar e ir al estado 70
+    '%'         desplazar e ir al estado 71
+
+
+Estado 73
+
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+   76            | no expr_logica .
+
+    $default  reduce usando la regla 76 (expr_logica)
+
+
+Estado 74
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   69     | '(' expr . ')'
+   77 expr_logica: expr . MENORIGUAL expr
+   78            | expr . MAYORIGUAL expr
+   79            | expr . MENOR expr
+   80            | expr . MAYOR expr
+   81            | expr . IGUAL expr
+   82            | expr . DISTINTO expr
+
+    DIVENT      desplazar e ir al estado 66
+    MENORIGUAL  desplazar e ir al estado 76
+    MAYORIGUAL  desplazar e ir al estado 77
+    MENOR       desplazar e ir al estado 78
+    MAYOR       desplazar e ir al estado 79
+    DISTINTO    desplazar e ir al estado 80
+    IGUAL       desplazar e ir al estado 81
+    '+'         desplazar e ir al estado 67
+    '-'         desplazar e ir al estado 68
+    '*'         desplazar e ir al estado 69
+    '/'         desplazar e ir al estado 70
+    '%'         desplazar e ir al estado 71
+    ')'         desplazar e ir al estado 98
+
+
+Estado 75
+
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+   83            | '(' expr_logica . ')'
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+    y         desplazar e ir al estado 85
+    o         desplazar e ir al estado 86
+    ')'       desplazar e ir al estado 106
+
+
+Estado 76
+
+   77 expr_logica: expr MENORIGUAL . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 107
+
+
+Estado 77
+
+   78 expr_logica: expr MAYORIGUAL . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 108
+
+
+Estado 78
+
+   79 expr_logica: expr MENOR . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 109
+
+
+Estado 79
+
+   80 expr_logica: expr MAYOR . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 110
+
+
+Estado 80
+
+   82 expr_logica: expr DISTINTO . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 111
+
+
+Estado 81
+
+   81 expr_logica: expr IGUAL . expr
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 112
+
+
+Estado 82
+
+   14 defVar: IDVAB ASIG expr salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 14 (defVar)
+
+
+Estado 83
+
+   73 expr_logica: expr_logica DISTINTO . expr_logica
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 72
+    expr_logica  ir al estado 113
+
+
+Estado 84
+
+   72 expr_logica: expr_logica IGUAL . expr_logica
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 72
+    expr_logica  ir al estado 114
+
+
+Estado 85
+
+   74 expr_logica: expr_logica y . expr_logica
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 72
+    expr_logica  ir al estado 115
+
+
+Estado 86
+
+   75 expr_logica: expr_logica o . expr_logica
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 72
+    expr_logica  ir al estado 116
+
+
+Estado 87
+
+   15 defVar: IDVAB ASIG expr_logica salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 15 (defVar)
+
+
+Estado 88
+
+   11 defVar: Enterovab IDVAB ASIG expr . salto
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+    '\n'    desplazar e ir al estado 2
+
+    salto  ir al estado 117
+
+
+Estado 89
+
+   16 identificadoresEntero: IDVAB . ',' identificadoresEntero
+   17                      | IDVAB .
+
+    ','  desplazar e ir al estado 53
+
+    $default  reduce usando la regla 17 (identificadoresEntero)
+
+
+Estado 90
+
+   16 identificadoresEntero: IDVAB ',' identificadoresEntero .
+
+    $default  reduce usando la regla 16 (identificadoresEntero)
+
+
+Estado 91
+
+   12 defVar: Realvab IDVAB ASIG expr . salto
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+    '\n'    desplazar e ir al estado 2
+
+    salto  ir al estado 118
+
+
+Estado 92
+
+   18 identificadoresReal: IDVAB . ',' identificadoresReal
+   19                    | IDVAB .
+
+    ','  desplazar e ir al estado 56
+
+    $default  reduce usando la regla 19 (identificadoresReal)
+
+
+Estado 93
+
+   18 identificadoresReal: IDVAB ',' identificadoresReal .
+
+    $default  reduce usando la regla 18 (identificadoresReal)
+
+
+Estado 94
+
+   13 defVar: Boolvab IDVAB ASIG expr_logica . salto
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+    y         desplazar e ir al estado 85
+    o         desplazar e ir al estado 86
+    '\n'      desplazar e ir al estado 2
+
+    salto  ir al estado 119
+
+
+Estado 95
+
+   20 identificadoresBool: IDVAB . ',' identificadoresBool
+   21                    | IDVAB .
+
+    ','  desplazar e ir al estado 59
+
+    $default  reduce usando la regla 21 (identificadoresBool)
+
+
+Estado 96
+
+   20 identificadoresBool: IDVAB ',' identificadoresBool .
+
+    $default  reduce usando la regla 20 (identificadoresBool)
+
+
+Estado 97
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR . rectangulo ',' valor ',' valor ',' color MAYOR salto
+   27        | Nombre IGUALMUEBLES MENOR . circulo ',' valor ',' color MAYOR salto
+
+    rectangulo  desplazar e ir al estado 120
+    circulo     desplazar e ir al estado 121
+
+
+Estado 98
+
+   69 expr: '(' expr ')' .
+
+    $default  reduce usando la regla 69 (expr)
+
+
+Estado 99
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor . ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+    ')'  desplazar e ir al estado 122
+
+
+Estado 100
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   66     | expr DIVENT expr .
+   67     | expr . '%' expr
+
+    $default  reduce usando la regla 66 (expr)
+
+
+Estado 101
+
+   62 expr: expr . '+' expr
+   62     | expr '+' expr .
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    DIVENT  desplazar e ir al estado 66
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 62 (expr)
+
+
+Estado 102
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   63     | expr '-' expr .
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    DIVENT  desplazar e ir al estado 66
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 63 (expr)
+
+
+Estado 103
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   64     | expr '*' expr .
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    $default  reduce usando la regla 64 (expr)
+
+
+Estado 104
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   65     | expr '/' expr .
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    $default  reduce usando la regla 65 (expr)
+
+
+Estado 105
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   67     | expr '%' expr .
+
+    $default  reduce usando la regla 67 (expr)
+
+
+Estado 106
+
+   83 expr_logica: '(' expr_logica ')' .
+
+    $default  reduce usando la regla 83 (expr_logica)
+
+
+Estado 107
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   77 expr_logica: expr MENORIGUAL expr .
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 77 (expr_logica)
+
+
+Estado 108
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   78 expr_logica: expr MAYORIGUAL expr .
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 78 (expr_logica)
+
+
+Estado 109
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   79 expr_logica: expr MENOR expr .
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 79 (expr_logica)
+
+
+Estado 110
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   80 expr_logica: expr MAYOR expr .
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 80 (expr_logica)
+
+
+Estado 111
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   82 expr_logica: expr DISTINTO expr .
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 82 (expr_logica)
+
+
+Estado 112
+
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   81 expr_logica: expr IGUAL expr .
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+
+    $default  reduce usando la regla 81 (expr_logica)
+
+
+Estado 113
+
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   73            | expr_logica DISTINTO expr_logica .
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+
+    $default  reduce usando la regla 73 (expr_logica)
+
+
+Estado 114
+
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   72            | expr_logica IGUAL expr_logica .
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+
+    $default  reduce usando la regla 72 (expr_logica)
+
+
+Estado 115
+
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   74            | expr_logica y expr_logica .
+   75            | expr_logica . o expr_logica
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+
+    $default  reduce usando la regla 74 (expr_logica)
+
+
+Estado 116
+
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+   75            | expr_logica o expr_logica .
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+    y         desplazar e ir al estado 85
+
+    $default  reduce usando la regla 75 (expr_logica)
+
+
+Estado 117
+
+   11 defVar: Enterovab IDVAB ASIG expr salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 11 (defVar)
+
+
+Estado 118
+
+   12 defVar: Realvab IDVAB ASIG expr salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 12 (defVar)
+
+
+Estado 119
+
+   13 defVar: Boolvab IDVAB ASIG expr_logica salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 13 (defVar)
+
+
+Estado 120
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo . ',' valor ',' valor ',' color MAYOR salto
+
+    ','  desplazar e ir al estado 123
+
+
+Estado 121
+
+   27 defMbls: Nombre IGUALMUEBLES MENOR circulo . ',' valor ',' color MAYOR salto
+
+    ','  desplazar e ir al estado 124
+
+
+Estado 122
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' . CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+    CADENA  desplazar e ir al estado 125
+
+
+Estado 123
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' . valor ',' valor ',' color MAYOR salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 126
+    expr   ir al estado 45
+
+
+Estado 124
+
+   27 defMbls: Nombre IGUALMUEBLES MENOR circulo ',' . valor ',' color MAYOR salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 127
+    expr   ir al estado 45
+
+
+Estado 125
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA . PUNTOS $@3 salto secDefHabs FINHABITACION salto
+
+    PUNTOS  desplazar e ir al estado 128
+
+
+Estado 126
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor . ',' valor ',' color MAYOR salto
+
+    ','  desplazar e ir al estado 129
+
+
+Estado 127
+
+   27 defMbls: Nombre IGUALMUEBLES MENOR circulo ',' valor . ',' color MAYOR salto
+
+    ','  desplazar e ir al estado 130
+
+
+Estado 128
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA PUNTOS . $@3 salto secDefHabs FINHABITACION salto
+
+    $default  reduce usando la regla 38 ($@3)
+
+    $@3  ir al estado 131
+
+
+Estado 129
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor ',' . valor ',' color MAYOR salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 132
+    expr   ir al estado 45
+
+
+Estado 130
+
+   27 defMbls: Nombre IGUALMUEBLES MENOR circulo ',' valor ',' . color MAYOR salto
+
+    negro     desplazar e ir al estado 133
+    amarillo  desplazar e ir al estado 134
+    gris      desplazar e ir al estado 135
+    rojo      desplazar e ir al estado 136
+    azul      desplazar e ir al estado 137
+    marron    desplazar e ir al estado 138
+    verde     desplazar e ir al estado 139
+
+    color  ir al estado 140
+
+
+Estado 131
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA PUNTOS $@3 . salto secDefHabs FINHABITACION salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 141
+
+
+Estado 132
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor ',' valor . ',' color MAYOR salto
+
+    ','  desplazar e ir al estado 142
+
+
+Estado 133
+
+   28 color: negro .
+
+    $default  reduce usando la regla 28 (color)
+
+
+Estado 134
+
+   32 color: amarillo .
+
+    $default  reduce usando la regla 32 (color)
+
+
+Estado 135
+
+   29 color: gris .
+
+    $default  reduce usando la regla 29 (color)
+
+
+Estado 136
+
+   33 color: rojo .
+
+    $default  reduce usando la regla 33 (color)
+
+
+Estado 137
+
+   34 color: azul .
+
+    $default  reduce usando la regla 34 (color)
+
+
+Estado 138
+
+   31 color: marron .
+
+    $default  reduce usando la regla 31 (color)
+
+
+Estado 139
+
+   30 color: verde .
+
+    $default  reduce usando la regla 30 (color)
+
+
+Estado 140
+
+   27 defMbls: Nombre IGUALMUEBLES MENOR circulo ',' valor ',' color . MAYOR salto
+
+    MAYOR  desplazar e ir al estado 143
+
+
+Estado 141
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA PUNTOS $@3 salto . secDefHabs FINHABITACION salto
+   58 salto: salto . '\n'
+
+    IDVAB    desplazar e ir al estado 144
+    situar   desplazar e ir al estado 145
+    mensaje  desplazar e ir al estado 146
+    pausa    desplazar e ir al estado 147
+    si       desplazar e ir al estado 148
+    '\n'     desplazar e ir al estado 10
+
+    secDefHabs  ir al estado 149
+    defHabs     ir al estado 150
+    si_bloque   ir al estado 151
+
+
+Estado 142
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor ',' valor ',' . color MAYOR salto
+
+    negro     desplazar e ir al estado 133
+    amarillo  desplazar e ir al estado 134
+    gris      desplazar e ir al estado 135
+    rojo      desplazar e ir al estado 136
+    azul      desplazar e ir al estado 137
+    marron    desplazar e ir al estado 138
+    verde     desplazar e ir al estado 139
+
+    color  ir al estado 152
+
+
+Estado 143
+
+   27 defMbls: Nombre IGUALMUEBLES MENOR circulo ',' valor ',' color MAYOR . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 153
+
+
+Estado 144
+
+   47 defHabs: IDVAB . ASIG expr salto
+   48        | IDVAB . ASIG expr_logica salto
+
+    ASIG  desplazar e ir al estado 154
+
+
+Estado 145
+
+   44 defHabs: situar . '(' Nombre ',' valor ',' valor ')' salto
+
+    '('  desplazar e ir al estado 155
+
+
+Estado 146
+
+   45 defHabs: mensaje . '(' CADENA ')' salto
+
+    '('  desplazar e ir al estado 156
+
+
+Estado 147
+
+   46 defHabs: pausa . '(' expr ')' salto
+
+    '('  desplazar e ir al estado 157
+
+
+Estado 148
+
+   56 si_bloque: si . '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+
+    '('  desplazar e ir al estado 158
+
+
+Estado 149
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA PUNTOS $@3 salto secDefHabs . FINHABITACION salto
+   41 secDefHabs: secDefHabs . defHabs
+
+    IDVAB          desplazar e ir al estado 144
+    FINHABITACION  desplazar e ir al estado 159
+    situar         desplazar e ir al estado 145
+    mensaje        desplazar e ir al estado 146
+    pausa          desplazar e ir al estado 147
+    si             desplazar e ir al estado 148
+
+    defHabs    ir al estado 160
+    si_bloque  ir al estado 151
+
+
+Estado 150
+
+   40 secDefHabs: defHabs .
+
+    $default  reduce usando la regla 40 (secDefHabs)
+
+
+Estado 151
+
+   49 defHabs: si_bloque .
+
+    $default  reduce usando la regla 49 (defHabs)
+
+
+Estado 152
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor ',' valor ',' color . MAYOR salto
+
+    MAYOR  desplazar e ir al estado 161
+
+
+Estado 153
+
+   27 defMbls: Nombre IGUALMUEBLES MENOR circulo ',' valor ',' color MAYOR salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 27 (defMbls)
+
+
+Estado 154
+
+   47 defHabs: IDVAB ASIG . expr salto
+   48        | IDVAB ASIG . expr_logica salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 162
+    expr_logica  ir al estado 163
+
+
+Estado 155
+
+   44 defHabs: situar '(' . Nombre ',' valor ',' valor ')' salto
+
+    Nombre  desplazar e ir al estado 164
+
+
+Estado 156
+
+   45 defHabs: mensaje '(' . CADENA ')' salto
+
+    CADENA  desplazar e ir al estado 165
+
+
+Estado 157
+
+   46 defHabs: pausa '(' . expr ')' salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    expr  ir al estado 166
+
+
+Estado 158
+
+   56 si_bloque: si '(' . expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 72
+    expr_logica  ir al estado 167
+
+
+Estado 159
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 168
+
+
+Estado 160
+
+   41 secDefHabs: secDefHabs defHabs .
+
+    $default  reduce usando la regla 41 (secDefHabs)
+
+
+Estado 161
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor ',' valor ',' color MAYOR . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 169
+
+
+Estado 162
+
+   47 defHabs: IDVAB ASIG expr . salto
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   77 expr_logica: expr . MENORIGUAL expr
+   78            | expr . MAYORIGUAL expr
+   79            | expr . MENOR expr
+   80            | expr . MAYOR expr
+   81            | expr . IGUAL expr
+   82            | expr . DISTINTO expr
+
+    DIVENT      desplazar e ir al estado 66
+    MENORIGUAL  desplazar e ir al estado 76
+    MAYORIGUAL  desplazar e ir al estado 77
+    MENOR       desplazar e ir al estado 78
+    MAYOR       desplazar e ir al estado 79
+    DISTINTO    desplazar e ir al estado 80
+    IGUAL       desplazar e ir al estado 81
+    '+'         desplazar e ir al estado 67
+    '-'         desplazar e ir al estado 68
+    '*'         desplazar e ir al estado 69
+    '/'         desplazar e ir al estado 70
+    '%'         desplazar e ir al estado 71
+    '\n'        desplazar e ir al estado 2
+
+    salto  ir al estado 170
+
+
+Estado 163
+
+   48 defHabs: IDVAB ASIG expr_logica . salto
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+    y         desplazar e ir al estado 85
+    o         desplazar e ir al estado 86
+    '\n'      desplazar e ir al estado 2
+
+    salto  ir al estado 171
+
+
+Estado 164
+
+   44 defHabs: situar '(' Nombre . ',' valor ',' valor ')' salto
+
+    ','  desplazar e ir al estado 172
+
+
+Estado 165
+
+   45 defHabs: mensaje '(' CADENA . ')' salto
+
+    ')'  desplazar e ir al estado 173
+
+
+Estado 166
+
+   46 defHabs: pausa '(' expr . ')' salto
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+
+    DIVENT  desplazar e ir al estado 66
+    '+'     desplazar e ir al estado 67
+    '-'     desplazar e ir al estado 68
+    '*'     desplazar e ir al estado 69
+    '/'     desplazar e ir al estado 70
+    '%'     desplazar e ir al estado 71
+    ')'     desplazar e ir al estado 174
+
+
+Estado 167
+
+   56 si_bloque: si '(' expr_logica . ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+    y         desplazar e ir al estado 85
+    o         desplazar e ir al estado 86
+    ')'       desplazar e ir al estado 175
+
+
+Estado 168
+
+   39 blHabitaciones: HABITACION '(' valor ',' valor ')' CADENA PUNTOS $@3 salto secDefHabs FINHABITACION salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 39 (blHabitaciones)
+
+
+Estado 169
+
+   26 defMbls: Nombre IGUALMUEBLES MENOR rectangulo ',' valor ',' valor ',' color MAYOR salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 26 (defMbls)
+
+
+Estado 170
+
+   47 defHabs: IDVAB ASIG expr salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 47 (defHabs)
+
+
+Estado 171
+
+   48 defHabs: IDVAB ASIG expr_logica salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 48 (defHabs)
+
+
+Estado 172
+
+   44 defHabs: situar '(' Nombre ',' . valor ',' valor ')' salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 176
+    expr   ir al estado 45
+
+
+Estado 173
+
+   45 defHabs: mensaje '(' CADENA ')' . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 177
+
+
+Estado 174
+
+   46 defHabs: pausa '(' expr ')' . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 178
+
+
+Estado 175
+
+   56 si_bloque: si '(' expr_logica ')' . $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+
+    $default  reduce usando la regla 55 ($@4)
+
+    $@4  ir al estado 179
+
+
+Estado 176
+
+   44 defHabs: situar '(' Nombre ',' valor . ',' valor ')' salto
+
+    ','  desplazar e ir al estado 180
+
+
+Estado 177
+
+   45 defHabs: mensaje '(' CADENA ')' salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 45 (defHabs)
+
+
+Estado 178
+
+   46 defHabs: pausa '(' expr ')' salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 46 (defHabs)
+
+
+Estado 179
+
+   56 si_bloque: si '(' expr_logica ')' $@4 . '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+
+    '{'  desplazar e ir al estado 181
+
+
+Estado 180
+
+   44 defHabs: situar '(' Nombre ',' valor ',' . valor ')' salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 182
+    expr   ir al estado 45
+
+
+Estado 181
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' . salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 183
+
+
+Estado 182
+
+   44 defHabs: situar '(' Nombre ',' valor ',' valor . ')' salto
+
+    ')'  desplazar e ir al estado 184
+
+
+Estado 183
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto . secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto
+   58 salto: salto . '\n'
+
+    IDVAB    desplazar e ir al estado 144
+    situar   desplazar e ir al estado 145
+    mensaje  desplazar e ir al estado 146
+    pausa    desplazar e ir al estado 147
+    si       desplazar e ir al estado 148
+    '\n'     desplazar e ir al estado 10
+
+    secDefHabs  ir al estado 185
+    defHabs     ir al estado 150
+    si_bloque   ir al estado 151
+
+
+Estado 184
+
+   44 defHabs: situar '(' Nombre ',' valor ',' valor ')' . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 186
+
+
+Estado 185
+
+   41 secDefHabs: secDefHabs . defHabs
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs . '}' salto si_no '{' salto secDefHabs2 '}' salto
+
+    IDVAB    desplazar e ir al estado 144
+    situar   desplazar e ir al estado 145
+    mensaje  desplazar e ir al estado 146
+    pausa    desplazar e ir al estado 147
+    si       desplazar e ir al estado 148
+    '}'      desplazar e ir al estado 187
+
+    defHabs    ir al estado 160
+    si_bloque  ir al estado 151
+
+
+Estado 186
+
+   44 defHabs: situar '(' Nombre ',' valor ',' valor ')' salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 44 (defHabs)
+
+
+Estado 187
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' . salto si_no '{' salto secDefHabs2 '}' salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 188
+
+
+Estado 188
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto . si_no '{' salto secDefHabs2 '}' salto
+   58 salto: salto . '\n'
+
+    si_no  desplazar e ir al estado 189
+    '\n'   desplazar e ir al estado 10
+
+
+Estado 189
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no . '{' salto secDefHabs2 '}' salto
+
+    '{'  desplazar e ir al estado 190
+
+
+Estado 190
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' . salto secDefHabs2 '}' salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 191
+
+
+Estado 191
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto . secDefHabs2 '}' salto
+   58 salto: salto . '\n'
+
+    IDVAB    desplazar e ir al estado 192
+    situar   desplazar e ir al estado 193
+    mensaje  desplazar e ir al estado 194
+    pausa    desplazar e ir al estado 195
+    '\n'     desplazar e ir al estado 10
+
+    secDefHabs2  ir al estado 196
+    defHabs2     ir al estado 197
+
+
+Estado 192
+
+   53 defHabs2: IDVAB . ASIG expr salto
+   54         | IDVAB . ASIG expr_logica salto
+
+    ASIG  desplazar e ir al estado 198
+
+
+Estado 193
+
+   50 defHabs2: situar . '(' Nombre ',' valor ',' valor ')' salto
+
+    '('  desplazar e ir al estado 199
+
+
+Estado 194
+
+   51 defHabs2: mensaje . '(' CADENA ')' salto
+
+    '('  desplazar e ir al estado 200
+
+
+Estado 195
+
+   52 defHabs2: pausa . '(' valor ')' salto
+
+    '('  desplazar e ir al estado 201
+
+
+Estado 196
+
+   43 secDefHabs2: secDefHabs2 . defHabs2
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 . '}' salto
+
+    IDVAB    desplazar e ir al estado 192
+    situar   desplazar e ir al estado 193
+    mensaje  desplazar e ir al estado 194
+    pausa    desplazar e ir al estado 195
+    '}'      desplazar e ir al estado 202
+
+    defHabs2  ir al estado 203
+
+
+Estado 197
+
+   42 secDefHabs2: defHabs2 .
+
+    $default  reduce usando la regla 42 (secDefHabs2)
+
+
+Estado 198
+
+   53 defHabs2: IDVAB ASIG . expr salto
+   54         | IDVAB ASIG . expr_logica salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    CIERTO  desplazar e ir al estado 46
+    FALSO   desplazar e ir al estado 47
+    no      desplazar e ir al estado 48
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 49
+
+    expr         ir al estado 204
+    expr_logica  ir al estado 205
+
+
+Estado 199
+
+   50 defHabs2: situar '(' . Nombre ',' valor ',' valor ')' salto
+
+    Nombre  desplazar e ir al estado 206
+
+
+Estado 200
+
+   51 defHabs2: mensaje '(' . CADENA ')' salto
+
+    CADENA  desplazar e ir al estado 207
+
+
+Estado 201
+
+   52 defHabs2: pausa '(' . valor ')' salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 208
+    expr   ir al estado 45
+
+
+Estado 202
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 209
+
+
+Estado 203
+
+   43 secDefHabs2: secDefHabs2 defHabs2 .
+
+    $default  reduce usando la regla 43 (secDefHabs2)
+
+
+Estado 204
+
+   53 defHabs2: IDVAB ASIG expr . salto
+   62 expr: expr . '+' expr
+   63     | expr . '-' expr
+   64     | expr . '*' expr
+   65     | expr . '/' expr
+   66     | expr . DIVENT expr
+   67     | expr . '%' expr
+   77 expr_logica: expr . MENORIGUAL expr
+   78            | expr . MAYORIGUAL expr
+   79            | expr . MENOR expr
+   80            | expr . MAYOR expr
+   81            | expr . IGUAL expr
+   82            | expr . DISTINTO expr
+
+    DIVENT      desplazar e ir al estado 66
+    MENORIGUAL  desplazar e ir al estado 76
+    MAYORIGUAL  desplazar e ir al estado 77
+    MENOR       desplazar e ir al estado 78
+    MAYOR       desplazar e ir al estado 79
+    DISTINTO    desplazar e ir al estado 80
+    IGUAL       desplazar e ir al estado 81
+    '+'         desplazar e ir al estado 67
+    '-'         desplazar e ir al estado 68
+    '*'         desplazar e ir al estado 69
+    '/'         desplazar e ir al estado 70
+    '%'         desplazar e ir al estado 71
+    '\n'        desplazar e ir al estado 2
+
+    salto  ir al estado 210
+
+
+Estado 205
+
+   54 defHabs2: IDVAB ASIG expr_logica . salto
+   72 expr_logica: expr_logica . IGUAL expr_logica
+   73            | expr_logica . DISTINTO expr_logica
+   74            | expr_logica . y expr_logica
+   75            | expr_logica . o expr_logica
+
+    DISTINTO  desplazar e ir al estado 83
+    IGUAL     desplazar e ir al estado 84
+    y         desplazar e ir al estado 85
+    o         desplazar e ir al estado 86
+    '\n'      desplazar e ir al estado 2
+
+    salto  ir al estado 211
+
+
+Estado 206
+
+   50 defHabs2: situar '(' Nombre . ',' valor ',' valor ')' salto
+
+    ','  desplazar e ir al estado 212
+
+
+Estado 207
+
+   51 defHabs2: mensaje '(' CADENA . ')' salto
+
+    ')'  desplazar e ir al estado 213
+
+
+Estado 208
+
+   52 defHabs2: pausa '(' valor . ')' salto
+
+    ')'  desplazar e ir al estado 214
+
+
+Estado 209
+
+   56 si_bloque: si '(' expr_logica ')' $@4 '{' salto secDefHabs '}' salto si_no '{' salto secDefHabs2 '}' salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 56 (si_bloque)
+
+
+Estado 210
+
+   53 defHabs2: IDVAB ASIG expr salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 53 (defHabs2)
+
+
+Estado 211
+
+   54 defHabs2: IDVAB ASIG expr_logica salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 54 (defHabs2)
+
+
+Estado 212
+
+   50 defHabs2: situar '(' Nombre ',' . valor ',' valor ')' salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 215
+    expr   ir al estado 45
+
+
+Estado 213
+
+   51 defHabs2: mensaje '(' CADENA ')' . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 216
+
+
+Estado 214
+
+   52 defHabs2: pausa '(' valor ')' . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 217
+
+
+Estado 215
+
+   50 defHabs2: situar '(' Nombre ',' valor . ',' valor ')' salto
+
+    ','  desplazar e ir al estado 218
+
+
+Estado 216
+
+   51 defHabs2: mensaje '(' CADENA ')' salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 51 (defHabs2)
+
+
+Estado 217
+
+   52 defHabs2: pausa '(' valor ')' salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 52 (defHabs2)
+
+
+Estado 218
+
+   50 defHabs2: situar '(' Nombre ',' valor ',' . valor ')' salto
+
+    REAL    desplazar e ir al estado 39
+    ENTERO  desplazar e ir al estado 40
+    IDVAB   desplazar e ir al estado 41
+    '-'     desplazar e ir al estado 42
+    '('     desplazar e ir al estado 43
+
+    valor  ir al estado 219
+    expr   ir al estado 45
+
+
+Estado 219
+
+   50 defHabs2: situar '(' Nombre ',' valor ',' valor . ')' salto
+
+    ')'  desplazar e ir al estado 220
+
+
+Estado 220
+
+   50 defHabs2: situar '(' Nombre ',' valor ',' valor ')' . salto
+
+    '\n'  desplazar e ir al estado 2
+
+    salto  ir al estado 221
+
+
+Estado 221
+
+   50 defHabs2: situar '(' Nombre ',' valor ',' valor ')' salto .
+   58 salto: salto . '\n'
+
+    '\n'  desplazar e ir al estado 10
+
+    $default  reduce usando la regla 50 (defHabs2)
