@@ -13,13 +13,14 @@ Este proyecto se centra en **el diseño iterativo de interfaces**, la **evaluaci
 
 **NodoPlay** es una plataforma web desarrollada como proyecto final de la asignatura. Surge como respuesta a la necesidad planteada por una empresa real de disponer de una solución accesible, funcional y gamificada en el ámbito de la educación digital.
 
-> ℹ️ *Este proyecto es la continuación del trabajo realizado en la asignatura de **Ingeniería de Requisitos**, donde se definieron de forma profesional los requisitos funcionales y no funcionales del sistema, se modelaron casos de uso, se elaboró un prototipo conceptual interactivo y se validaron las necesidades del cliente mediante técnicas reales de elicitación y análisis.  
-Puedes consultar la primera fase del proyecto aquí:*  
-👉 [📦 Ingeniería de Requisitos – NodoPlay (2023/2024)](../IngenieriaDeRequisitos_2023-24)
+> ℹ️ *Este proyecto es la continuación del trabajo realizado en la asignatura de **Ingeniería de Requisitos**, donde se definieron de forma profesional los requisitos funcionales y no funcionales del sistema, se modelaron casos de uso, se elaboró un prototipo conceptual interactivo y se validaron las necesidades del cliente mediante técnicas reales de elicitación y análisis.* 
+
+Puedes consultar la primera fase del proyecto aquí: 
+👉 [📋 Ingeniería de Requisitos – NodoPlay (2023/2024)](../IngenieriaDeRequisitos_2023-24)
 
 ---
 
-## 🎨 Objetivos
+## 🎯 Objetivos
 
 - Diseñar interfaces accesibles y coherentes para distintos perfiles (docente, gestor, cliente).
 - Permitir a los usuarios contratar servicios gamificados.
@@ -47,7 +48,7 @@ Puedes consultar la primera fase del proyecto aquí:*
 │
 ├── README.md
 ├── NodoPlay_ MemoriaProyecto.pdf  # Documento con la memoria final del proyecto
-└── NodoPlay.vp		            # Prototipo de la plataforma en formato JustInMind
+└── NodoPlay.vp		                 # Prototipo de la plataforma en formato JustInMind
 ```
 
 ---
