@@ -1,10 +1,10 @@
 # 🎓 Proyectos de Ingeniería del Software – Universidad de Extremadura
 
-Bienvenido al repositorio que recopila los proyectos académicos desarrollados por **Ignacio Alcalde Torrescusa** durante el Grado en **Ingeniería Informática** en la **Universidad de Extremadura (UEX)** durante la promoción 2021-2025.
+Bienvenido al repositorio que recopila los proyectos académicos desarrollados por **Ignacio Alcalde Torrescusa** durante el Grado en **Ingeniería del Software** en la **Universidad de Extremadura (UEX)** durante la promoción 2021-2025.
 
-Este espacio muestra de forma organizada la evolución de mis competencias técnicas y metodológicas a lo largo de mi carrera. Los proyectos abarcan diversas áreas dentro de la ingeniería informática: programación, sistemas, redes, diseño web, inteligencia artificial, auditoría informática, entre otros muchos.
+Este espacio presenta de forma organizada la evolución de mis competencias técnicas y metodológicas adquiridas durante mi formación. Los proyectos abarcan diversas áreas dentro de la ingeniería software: programación, sistemas, redes, diseño web, inteligencia artificial, auditoría informática, entre otros muchos.
 
-> *Cabe destacar que este repositorio incluye únicamente una selección representativa de los proyectos desarrollados durante la carrera. A lo largo de la formación se han adquirido numerosas competencias y conocimientos adicionales que no se encuentran reflejados en este espacio.*
+> *Cabe destacar que este repositorio incluye únicamente una selección representativa de los proyectos desarrollados durante la carrera. A lo largo de la trayectoria académica se han adquirido numerosas competencias y conocimientos adicionales que no se encuentran reflejados en este espacio.*
 
 ---
 
@@ -43,7 +43,7 @@ Cada carpeta corresponde a una asignatura o proyecto concreto. Dentro de ellas e
 
 ## 🧰 Áreas trabajadas y tecnologías utilizadas
 
-Este repositorio abarca una amplia gama de áreas dentro de la ingeniería informática, integrando distintos lenguajes, herramientas y enfoques metodológicos:
+Este repositorio abarca una amplia gama de áreas dentro de la ingeniería software, integrando distintos lenguajes, herramientas y enfoques metodológicos:
 
 - 📦 **Desarrollo de software:** programación estructurada y orientada a objetos con **C++**, **Java**, **Assembly x86**, empleando entornos como **Eclipse**, **BlueJ**, **Qt**, y **Visual Studio Code**.
 - 🤖 **Inteligencia artificial:** implementación de algoritmos de búsqueda local y heurística, junto con experimentación en **Azure Machine Learning Studio** para tareas de clasificación y procesamiento de datos.
@@ -59,12 +59,12 @@ Este repositorio abarca una amplia gama de áreas dentro de la ingeniería infor
 
 Este repositorio sirve como portafolio profesional para mostrar mis competencias adquiridas en la universidad. Si has llegado hasta aquí desde mi currículum, encontrarás evidencia real de mi capacidad para:
 
-- Diseño y desarrollo de sistemas robustos, reutilizables y documentados
-- Uso de control de versiones, resolución de conflictos y trabajo colaborativo
-- Aplicación de criterios de usabilidad, accesibilidad y experiencia de usuario
-- Rápida adaptación a nuevos lenguajes, frameworks y entornos técnicos
-- Elaboración de documentación técnica clara y orientada al cliente/usuario
-- Implementación de buenas prácticas de ingeniería del software en todas las fases del desarrollo
+- Diseño y desarrollo de sistemas robustos, reutilizables y documentados.  
+- Uso de control de versiones, resolución de conflictos y trabajo colaborativo.  
+- Aplicación de criterios de usabilidad, accesibilidad y experiencia de usuario.  
+- Rápida adaptación a nuevos lenguajes, frameworks y entornos técnicos.  
+- Elaboración de documentación técnica clara y orientada al cliente/usuario.  
+- Implementación de buenas prácticas de ingeniería del software en todas las fases del desarrollo.
 
 ---
 
@@ -75,5 +75,5 @@ Todos los proyectos aquí recopilados forman parte del plan formativo oficial de
 ## 👨‍💻 Autor
 
 **Ignacio Alcalde Torrescusa**  
-Grado en Ingeniería Informática – Universidad de Extremadura  
+Grado en Ingeniería del Software – Universidad de Extremadura  
 Contacto: *ialcaldetorrescusa@gmail.com*
