@@ -38,6 +38,7 @@ Cada carpeta corresponde a una asignatura o proyecto concreto. Dentro de ellas e
 | 3º    | Diseño e Interacción de Sistemas               | Proyecto **NodoPlay**: plataforma gamificada accesible, centrada en UX                 |
 | 3º    | Ingeniería de Requisitos                       | Documento formal de requisitos y prototipo interactivo con JustInMind                  |
 | 3º    | Teoría de Lenguajes                            | Diseño e implementación de un lenguaje propio (**AMUEBLA**) con análisis léxico/sintáctico y generación de código en C++ |
+| 4º    | Advanced Software Technologies                 | Aplicación web **FeedApp** con MVC, Java Servlets, JSP, SQLite, MongoDB y RabbitMQ |
 
 ---
 
