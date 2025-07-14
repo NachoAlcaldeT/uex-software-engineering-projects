@@ -1,0 +1,238 @@
+\section{Featured Technology in Use}
+\label{featured_technology}
+
+\subsection{Introduction}
+
+The project focuses on developing a robust and scalable web application by integrating foundational and modern technologies. Key technologies included \textbf{Java Servlets} for backend development, \textbf{JSP} and \textbf{CSS} for the frontend, and \textbf{SQLite} and \textbf{MongoDB} for data management. Additionally, \textbf{RabbitMQ} was integrated to manage real-time updates and communication.
+
+One of the critical decisions in the development process was choosing \textbf{Java Servlets} over \textbf{Spring Boot annotations} for backend functionality. Both technologies offer distinct advantages, but the selection of Servlets was influenced by several factors, including the project’s scope, team expertise, and the need for a lightweight approach.
+
+This analysis examines the rationale behind this choice, comparing the strengths, weaknesses, and use cases of Servlets and Spring Boot annotations. Understanding this comparison provides deeper insights into the trade-offs involved in backend technology selection, especially for small- to medium-scale projects.
+
+\subsection{Genealogy and Context of the Problem Domain}
+
+\subsubsection{2.1 History and Evolution of Java Servlets}
+Introduced in the late 1990s as part of Java EE, Servlets addressed inefficiencies of CGI scripts by offering a thread-based model for dynamic, server-side web applications. Over time, they evolved to integrate with JavaBeans, JDBC, and modern frameworks.
+
+\subsubsection{2.2 History and Evolution of Spring Boot Annotations}
+Spring Boot, launched in 2014, simplified enterprise Java development through features like dependency injection and annotation-driven configurations (e.g., \texttt{@RestController}, \texttt{@Autowired}). Its modular, abstraction-heavy approach accelerates development for large-scale applications.
+
+\subsubsection{2.3 Application Domains}
+\begin{itemize}
+    \item \textbf{Java Servlets:} Best for small- to medium-scale projects needing low-level control and performance.
+    \item \textbf{Spring Boot:} Ideal for enterprise-grade, scalable, and modular applications.
+\end{itemize}
+
+\subsubsection{2.4 Initial Comparison: Goals of Servlets and Spring Boot}
+\begin{itemize}
+    \item \textbf{Servlets:} Provide a lightweight, foundational framework for handling HTTP requests and responses. Focus on performance, simplicity, and educational value.
+    \item \textbf{Spring Boot:} Abstract complexities, enabling faster development of scalable, enterprise-grade applications. Focus on modularity, automation, and ease of use.
+\end{itemize}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Feature} & \textbf{Servlets} & \textbf{Spring Boot Annotations} \\
+        \hline
+        Ease of use & Manual coding, more control. & Simplified with abstractions. \\
+        \hline
+        Learning Curve & Lower, core Java concepts. & Higher, requires Spring knowledge. \\
+        \hline
+        Performance & Minimal overhead. & Some overhead, better scalability. \\
+        \hline
+        Scalability & Suitable for small projects. & Optimized for large systems. \\
+        \hline
+        Development Speed & Slower due to manual setup. & Faster with automated tools. \\
+        \hline
+    \end{tabular}
+    \caption{Comparison of Servlets and Spring Boot Annotations}
+    \label{tab:servlet_springboot_comparison}
+\end{table}
+
+\subsection{Hypothesis and Experiment Design}
+
+\subsubsection{Hypothesis}
+The hypothesis explores whether Java Servlets are a better fit for small-scale projects compared to Spring Boot, focusing on performance, simplicity, and faster development setup for basic functionality.
+
+\subsection{Hypothesis and Experiment Design}
+
+\subsubsection{Hypothesis}
+
+The hypothesis for this experiment is:
+
+\begin{quote}
+    \textit{"Java Servlets offer greater efficiency and are better suited for small-scale projects compared to Spring Boot annotations, particularly in terms of performance, development simplicity, and scalability for limited concurrent users."}
+\end{quote}
+
+This hypothesis stems from the belief that Servlets, due to their lightweight nature and direct handling of HTTP requests, are more efficient for straightforward projects with minimal complexity. Conversely, Spring Boot's abstraction layers, while beneficial for large-scale or modular applications, could introduce unnecessary overhead in a smaller context.
+
+\subsubsection{Experiment Description}
+
+To validate this hypothesis, a simple web application feature---a login form---was implemented using both Java Servlets and Spring Boot annotations. This feature involved processing HTTP POST requests, validating user credentials, and generating appropriate responses. The following aspects were tested:
+
+\begin{enumerate}
+    \item \textbf{Functionality Evaluated}
+    \begin{itemize}
+        \item \textbf{Form Handling:} Both implementations processed login credentials submitted via an HTML form.
+        \item \textbf{Session Management:} Verified user sessions were properly managed after successful login.
+        \item \textbf{Database Interaction:} Each implementation connected to a SQLite database to retrieve and validate user data.
+    \end{itemize}
+
+    \item \textbf{Metrics Analyzed}
+    \begin{itemize}
+        \item \textbf{Performance:} Measured response time under varying levels of concurrent user requests.
+        \item \textbf{Development Simplicity:} Evaluated the amount of boilerplate code and configuration required for each technology.
+        \item \textbf{Scalability:} Tested how well each technology handled an increasing number of concurrent users.
+        \item \textbf{Error Handling:} Assessed how each implementation dealt with invalid input or failed database connections.
+    \end{itemize}
+
+    \item \textbf{Tools Used for Testing}
+    \begin{itemize}
+        \item \textbf{Apache JMeter:} Simulated concurrent user requests to measure response time and throughput.
+        \item \textbf{SQLite:} Used as the database for credential storage to ensure consistency across both implementations.
+        \item \textbf{Code Complexity Analysis:} Compared lines of code and configuration effort between Servlets and Spring Boot.
+    \end{itemize}
+
+    \item \textbf{Experimental Setup}
+    \begin{itemize}
+        \item \textbf{Environment:} Both implementations were deployed on a local Tomcat server for consistency.
+        \item \textbf{User Load:} Tests included 1, 50, 100, and 500 concurrent users to evaluate scalability.
+        \item \textbf{Timeframe:} Each test scenario ran for 2 minutes with ramp-up times of 10 seconds.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Quantitative Analysis}
+
+\begin{enumerate}
+    \item \textbf{Response Time Under Load}
+    \begin{itemize}
+        \item \textbf{Java Servlets:} Consistently performed better under low to moderate load (1--100 users), with average response times of 50ms for 1 user and 120ms for 100 users. Performance degraded slightly under heavy load (500 users), with response times reaching 300ms.
+        \item \textbf{Spring Boot:} Exhibited higher response times at all levels, averaging 80ms for 1 user, 150ms for 100 users, and 400ms for 500 users. The additional overhead from the framework's abstractions likely contributed to this.
+    \end{itemize}
+
+    \item \textbf{Development Time}
+    \begin{itemize}
+        \item \textbf{Java Servlets:} Required more lines of code for request processing and session management, taking approximately 4 hours to fully implement the login feature.
+        \item \textbf{Spring Boot:} With its annotation-based approach, implementation was faster, taking 2.5 hours.
+    \end{itemize}
+
+    \item \textbf{Scalability}
+    \begin{itemize}
+        \item \textbf{Java Servlets:} Handled up to 100 concurrent users efficiently but showed increased latency and dropped requests beyond this threshold.
+        \item \textbf{Spring Boot:} Managed larger loads better, sustaining acceptable performance for up to 300 concurrent users, likely due to its optimized thread handling and built-in features.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Qualitative Analysis}
+
+\begin{enumerate}
+    \item \textbf{Ease of Use}
+    \begin{itemize}
+        \item \textbf{Java Servlets:} Required a detailed understanding of the HTTP lifecycle, making development more time-intensive but offering granular control over request handling.
+        \item \textbf{Spring Boot:} Simplified the process significantly with annotations like \texttt{@PostMapping} and \texttt{@SessionAttributes}, reducing boilerplate code.
+    \end{itemize}
+
+    \item \textbf{Development Experience}
+    \begin{itemize}
+        \item \textbf{Java Servlets:} Developers appreciated the educational value of working directly with core Java APIs, gaining a deeper understanding of web application mechanics.
+        \item \textbf{Spring Boot:} Preferred by developers seeking faster results and focusing on business logic rather than infrastructure setup.
+    \end{itemize}
+
+    \item \textbf{Limitations Observed}
+    \begin{itemize}
+        \item \textbf{Java Servlets:}
+        \begin{itemize}
+            \item Lack of built-in features like validation or dependency injection increased development time.
+            \item Manual configuration for session and error handling was error-prone.
+        \end{itemize}
+        \item \textbf{Spring Boot:}
+        \begin{itemize}
+            \item Introduced unnecessary overhead for a simple project.
+            \item Required a learning curve for developers unfamiliar with the Spring ecosystem.
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Reasons for Choosing Servlets in the Project}
+
+\begin{itemize}
+    \item \textbf{Simplicity and Alignment with Team Capabilities:} Java Servlets were chosen primarily due to their simplicity and directness, aligning perfectly with the team’s existing skill set. Unlike Spring Boot, which requires a deeper understanding of its ecosystem and configuration, Servlets offer a more straightforward approach to handling HTTP requests and responses. This was particularly beneficial given the project’s limited timeline and scope.
+
+    \item \textbf{Educational Relevance:} One of the key objectives of the project was to strengthen the team’s foundational knowledge of backend development. By working with Servlets, the team gained hands-on experience in managing the request-response lifecycle, session handling, and database connectivity. These are essential skills for understanding the fundamentals of web application development and debugging.
+
+    \item \textbf{Prior Experience with Servlets:} The team had prior experience using Java Servlets during a previous project at our home university, where we implemented a booking system. This familiarity with Servlets allowed us to leverage existing knowledge and focus on refining and optimizing our approach. This prior exposure ensured that the learning curve was minimal, allowing us to proceed confidently with the development process.
+
+    \item \textbf{Project Needs and Technical Justification:} The project’s requirements—focused on implementing a lightweight and efficient web application—did not demand the advanced features provided by Spring Boot, such as dependency injection or modular microservices support. Servlets provided sufficient control and granularity to meet the functional needs of the project, including handling requests, managing user sessions, and interacting with a database.
+
+    \item \textbf{Advantages of Servlets in This Case:} 
+    \begin{itemize}
+    \item \textbf{Low Overhead}: Servlets avoid the abstraction layers of Spring Boot, resulting in better performance for a small-scale application.
+    \item \textbf{Granular Control}: They allowed the team to customize request handling and response formatting directly.
+    \item \textbf{Seamless Integration}: Servlets integrate effortlessly with JDBC for database operations, which is crucial for implementing features like user authentication.
+    \item \textbf{Simpler Deployment}: For environments limited to Java EE containers, deploying a Servlet-based application was less complex and more resource-efficient than setting up a Spring Boot environment.
+
+  
+\end{itemize}
+\end{itemize}
+\subsection{Integration of Servlets into the Prototype}
+
+\subsubsection{Implementation of Core Functionality}
+
+Servlets were used to build the backbone of the application, handling critical functionalities such as:
+
+\begin{itemize}
+    \item \textbf{User Authentication:} A Servlet processed login requests, validated credentials against a SQLite database, and managed user sessions.
+    \item \textbf{Dynamic Content Rendering:} JSP pages were used in conjunction with Servlets to deliver dynamic content, creating an interactive user interface.
+    \item \textbf{Request Handling:} Custom Servlets managed HTTP POST and GET requests, routing them to appropriate resources based on user input.
+\end{itemize}
+
+\subsubsection{Optimizations Made for Servlet-Based Solutions}
+
+\begin{itemize}
+    \item \textbf{Session Management:} Manual adjustments were made to optimize session handling, ensuring efficient memory usage and avoiding session conflicts during concurrent access.
+    \item \textbf{Performance Enhancements:} Query optimization in the database layer and caching strategies were implemented to reduce latency.
+    \item \textbf{Error Handling:} Custom error-handling Servlets were introduced to manage invalid inputs and database connection failures gracefully.
+\end{itemize}
+
+\subsubsection{Integration with Other Technologies}
+To build a robust and scalable prototype, Servlets were integrated with complementary technologies:
+
+\begin{itemize}
+    \item \textbf{RabbitMQ:}Servlets interacted with RabbitMQ for asynchronous messaging, enabling real-time updates for certain application features.
+    \item \textbf{JDBC:} Direct database connectivity was established using JDBC for operations like user authentication and data retrieval. Servlets acted as the middle layer between the client-side interface and the backend database.
+    \item \textbf{Frontend Compontents:} The Servlets seamlessly rendered JSP pages, dynamically populating content based on user actions and database queries.
+\end{itemize}
+
+\section{Reflexive Comparison and Future Applications}
+
+\subsection{1. When Spring Boot Would Be a Better Fit}
+
+Although Servlets were appropriate for this project, Spring Boot offers clear advantages for certain scenarios:
+
+\begin{itemize}
+    \item \textbf{Enterprise-Scale Applications:} For large projects requiring modularity, scalability, and microservices architecture, Spring Boot's built-in features such as dependency injection and service discovery simplify development.
+    \item \textbf{Rapid Development:} The automation provided by annotations like \texttt{@GetMapping} and \texttt{@Autowired} accelerates development, making it ideal for projects with tight deadlines.
+    \item \textbf{Complex Integrations:} Spring Boot excels in managing advanced integrations, such as security layers (via Spring Security), distributed systems, and messaging queues, with minimal configuration.
+    \item \textbf{Team Collaboration:} In larger teams, Spring Boot’s abstractions and ecosystem can improve productivity by standardizing development practices.
+\end{itemize}
+
+\subsection{2. Lessons Learned from Working with Servlets}
+
+\begin{itemize}
+    \item \textbf{Fundamental Understanding:} Developing with Servlets reinforced our knowledge of HTTP protocols, session management, and multithreading, which are critical for understanding backend operations.
+    \item \textbf{Granular Control:} We learned the value of having fine-grained control over request-response handling, which was especially helpful in customizing the application to meet specific requirements.
+    \item \textbf{Effort vs. Abstraction:} While Servlets provide full control, we recognized the trade-off in terms of the additional development effort required compared to frameworks like Spring Boot.
+    \item \textbf{Manual Optimizations:} The project highlighted the challenges of optimizing session handling, error management, and scalability manually, tasks that Spring Boot simplifies significantly.
+\end{itemize}
+
+\subsection{3. Preparing for Spring Boot in Future Projects}
+
+This project served as a stepping stone for transitioning to more advanced frameworks like Spring Boot. The following steps will guide our preparation:
+
+\begin{itemize}
+    \item \textbf{Learning the Ecosystem:} Familiarizing ourselves with key Spring components, such as Spring Data, Spring Security, and Spring Cloud, to leverage its full potential.
+    \item \textbf{Experimentation:} Conducting smaller projects using Spring Boot to gain hands-on experience with annotations, dependency injection, and microservices.
+    \item \textbf{Framework Evaluation:} Developing an understanding of when to use Spring Boot versus other tools, based on project size, complexity, and requirements.
+\end{itemize}
+
