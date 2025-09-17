@@ -39,6 +39,7 @@ Cada carpeta corresponde a una asignatura o proyecto concreto. Dentro de ellas e
 | 3º    | Ingeniería de Requisitos                       | Documento formal de requisitos y prototipo interactivo con JustInMind                  |
 | 3º    | Teoría de Lenguajes                            | Diseño e implementación de un lenguaje propio (**AMUEBLA**) con análisis léxico/sintáctico y generación de código en C++ |
 | 4º    | Advanced Software Technologies                 | Aplicación web **FeedApp** con MVC, Java Servlets, JSP, SQLite, MongoDB y RabbitMQ |
+| 4º    | Trabajo de Fin de Grado                        | Análisis de las comunicaciones y ciberseguridad en la era post-cuántica|
 
 ---
 
@@ -52,7 +53,8 @@ Este repositorio abarca una amplia gama de áreas dentro de la ingeniería softw
 - 🕵️ **Ciberseguridad y auditoría:** análisis forense de discos y borrado seguro mediante herramientas como **FLECO Studio**, **OSFClone**, **Recuva**, **Cryptool**, **Wireshark**, **Packet Tracer**.
 - 🎮 **Simulación y videojuegos:** desarrollo de juegos interactivos como **Tetris** (con **C++** y lógica en **ensamblador x86**) y **2048** (ensamblador puro), usando librerías gráficas como **Qt** y **Allegro5**.
 - 👥 **Diseño centrado en el usuario:** diseño de interfaces accesibles y evaluación de usabilidad mediante **JustInMind** y test de usuario con **Loop11**.
-- 📋 **Documentación técnica y formal:** elaboración de informes técnicos, memorias académicas y documentación de requisitos utilizando **UML**, wireframes interactivos y redacción estructurada orientada a cliente técnico o docente.
+- 📋 **Documentación técnica y formal:** elaboración de informes técnicos, memorias académicas y documentación de requisitos utilizando **UML**, wireframes interactivos y **LaTeX** para garantizar una redacción estructurada orientada a cliente técnico o docente.
+
 
 ---
 
